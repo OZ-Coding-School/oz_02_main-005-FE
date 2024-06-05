@@ -1,6 +1,6 @@
 ---
-name: Refactoring Template
-about: 리팩토링 이슈 템플릿
+name: style Template
+about: 스타일 이슈 템플릿
 title: "[style] ..."
 labels: "style"
 assignees: ""
