@@ -1,6 +1,6 @@
 ---
 name: Feature Template
-about: 기능 추가 이슈 템플릿
+about: 기능 추가 이슈템플릿
 title: "[feat] ..."
 labels: "feat"
 assignees: ""
@@ -16,4 +16,4 @@ assignees: ""
 - [ ] TODO
 - [ ] TODO
 
-## 📄참고할만한 자료(선택)
+## 📄참고할만한 자료 (선택)

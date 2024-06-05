@@ -1,6 +1,6 @@
 ---
 name: Refactoring Template
-about: 리팩토링 이슈 템플릿
+about: 리팩토링 이슈템플릿
 title: "[refactor] ..."
 labels: "refactor"
 assignees: ""
@@ -16,4 +16,4 @@ assignees: ""
 - [ ] TODO
 - [ ] TODO
 
-## 📄참고할만한 자료(선택)
+## 📄참고할만한 자료 (선택)

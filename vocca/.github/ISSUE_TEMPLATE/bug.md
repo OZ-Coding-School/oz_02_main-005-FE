@@ -1,6 +1,6 @@
 ---
 name: Bug Template
-about: 버그 리포트 이슈 템플릿
+about: 버그 리포트 이슈템플릿
 title: "[bug] ..."
 labels: "bug"
 assignees: ""
@@ -18,4 +18,4 @@ assignees: ""
 
 > 예상했던 정상적인 결과가 어떤 것이었는지 설명해주세요.
 
-## 📄참고할만한 자료(선택)
+## 📄참고할만한 자료 (선택)
