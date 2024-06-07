@@ -12,3 +12,48 @@
 - 🚒 rename : 파일 혹은 폴더명 수정하거나 옮기는 경우
 - 🔥 remove : 파일을 삭제하는 작업만 수행하는 경우
 - ✅ test : 테스트 코드, 리팩터링 테스트 코드 추가
+
+
+## 🗂️ 폴더 구조
+
+📦 src
+    ├── 📦 app
+    │   └── 📂 (Next.js app directory)
+    │       └── 📂 views
+    │           └── 📂 (렌더링을 위한 뷰 컴포넌트)
+    ├── 📦 features
+    │   ├── 📦 auth
+    │   │   └── 📂 (각 auth 기능에 관련된 폴더 및 파일들)
+    │   └── 📦 landing-edit
+    │       ├── 📂 constants (landing-edit에서만 사용되는 상수)
+    │       ├── 📂 context (landing-edit에서만 사용되는 Context)
+    │       ├── 📂 hooks (landing-edit에서만 사용되는 hook)
+    │       ├── 📂 store (landing-edit에서만 사용되는 클라이언트 전역 상태)
+    │       ├── 📂 types (landing-edit에서만 사용되는 타입)
+    │       ├── 📂 ui (landing-edit에서만 사용되는 UI 컴포넌트)
+    │       └── 📂 utils (landing-edit에서만 사용되는 유틸리티 함수)
+    │  
+    │       
+    │   
+    │      
+    ├── 📦 shared
+    │   ├── 📦 api
+    │   │   └── 📂 (공용 API 호출 로직)
+    │   ├── 📦 constants
+    │   │   └── 📂 (공용 상수)
+    │   ├── 📦 hooks
+    │   │   └── 📂 (공용 hook)
+    │   ├── 📦 store
+    │   │   └── 📂 (공용 클라이언트 전역 상태)
+    │   ├── 📦 types
+    │   │   └── 📂 (공용 타입)
+    │   ├── 📦 ui
+    │   │   └── 📂 (공용 UI 컴포넌트)
+    │   └── 📦 utils
+    │      └── 📂 (공용 유틸리티 함수)
+    │   
+    │   
+    └── 📦 views
+        ├── 📦 auth
+        │  
+        └── 📦 landing 
