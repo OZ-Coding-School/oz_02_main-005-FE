@@ -8,14 +8,14 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      primary: '956BED',
-      'text-primary': '252B42',
-      'text-secondary': '737373',
-      white: 'FFFFFF',
-      muted: 'BDBDBD',
-      success: '2DC071',
-      danger: 'E74040',
-      alert: 'E77C40',
+      primary: '#956BED',
+      text_primary: '#252B42',
+      text_secondary: '#737373',
+      white: '#FFFFFF',
+      muted: '#BDBDBD',
+      success: '#2DC071',
+      danger: '#E74040',
+      alert: '#E77C40',
     },
     fontFamily: {
       sans: ['Noto Sans KR'],
