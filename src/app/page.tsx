@@ -52,8 +52,9 @@ export default function Home() {
         type="switch" 
         onClick={handleClick} 
         buttonContents={[
-          { label: '버튼1' },
-          { label: '버튼2' }
+          { label: '새로 만들기' },
+          { label: '엑셀 업로드' },
+          { label: 'GPT' },
         ]}
       />
 
@@ -61,9 +62,8 @@ export default function Home() {
         type="switch" 
         onClick={handleClick} 
         buttonContents={[
-          { icon: '/icons/private.png', activeIcon: '/icons/private-active.png', label: '버튼1' },
-          { icon: '/icons/public.png',  activeIcon: '/icons/public-active.png', label: '버튼2' },
-          { label: '버튼3'}
+          { icon: '/icons/private.png', activeIcon: '/icons/private-active.png', label: '비공개' },
+          { icon: '/icons/public.png',  activeIcon: '/icons/public-active.png', label: '공개' },
         ]}
       />
     </main>

@@ -39,7 +39,7 @@ const Button = ({ type, onClick, children, buttonContents = [] }: ButtonProps) =
             <button 
               key={index}
               className={`flex-1 h-full rounded-[8px] font-medium flex items-center 
-                          ${content.icon ? 'justify-evenly pr-4' : 'justify-center'} 
+                          ${content.icon ? 'justify-evenly pr-8' : 'justify-center'} 
                           ${isActive ? 'bg-gray text-primary' : 'bg-white text-gray8'}`}
               onClick={() => handleClick(index)}
             >
