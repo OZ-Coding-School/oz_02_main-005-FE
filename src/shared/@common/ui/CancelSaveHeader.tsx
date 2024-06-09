@@ -6,29 +6,21 @@ type CancelSaveHeaderProps = {
 
 const CancelSaveHeader = ({ pageName, onCancel, onSave }: CancelSaveHeaderProps) => {
 
-  const handleCancelClick = () => {
-    onCancel();
-  };
-
-  const handleSaveClick = () => {
-    onSave();
-  };
-
   return (
-    <header className="w-[414px] h-12 white flex items-center px-3">
-      <div className='flex justify-between items-center w-full'>
+    <header className="w-[414px] h-[50px] bg-gray flex items-center px-3">
+      <div className="flex justify-between items-center w-full">
         <button 
           className="text-16 text-gray8 font-bold w-[30px] hover:text-primary"
-          onClick={handleCancelClick}
+          onClick={onCancel}
         >
           취소
         </button>
-        <p className="text-[18px] font-bold text-center">
+        <p className="text-18 font-bold text-center">
           {pageName}
         </p>
         <button 
           className="text-16 text-gray8 font-bold w-[30px] hover:text-primary"
-          onClick={handleSaveClick}
+          onClick={onSave}
         >
           저장
         </button>

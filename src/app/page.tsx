@@ -1,20 +1,27 @@
 'use client';
 
+import Button from "@/shared/@common/ui/Button";
 import CancelSaveHeader from "@/shared/@common/ui/CancelSaveHeader";
 import Header from "@/shared/@common/ui/Header";
 
 export default function Home() {
+
   const handleCancel = () => {
-    console.log('취소버튼 클릭');
+    console.log("취소클릭")
   };
 
   const handleSave  = () => {
-    console.log('저장버튼 클릭');
+    console.log("저장클릭")
+  };
+
+  const handleClick = () => {
+    console.log("버튼클릭")
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex flex-col h-screen gap-2 bg-alert p-10 items-center">
       <Header />
+
       <CancelSaveHeader 
         pageName="폴더 만들기"
         onCancel={handleCancel}
@@ -25,6 +32,39 @@ export default function Home() {
         pageName="카드 만들기"
         onCancel={handleCancel}
         onSave={handleSave}
+      />
+
+      <Button 
+        type="default" 
+        onClick={handleClick}
+      >
+        기본 버튼
+      </Button>
+
+      <Button 
+        type="default-white" 
+        onClick={handleClick}
+      >
+        라인 버튼
+      </Button>
+
+      <Button 
+        type="switch" 
+        onClick={handleClick} 
+        buttonContents={[
+          { label: '버튼1' },
+          { label: '버튼2' }
+        ]}
+      />
+
+      <Button 
+        type="switch" 
+        onClick={handleClick} 
+        buttonContents={[
+          { icon: '/icons/private.png', activeIcon: '/icons/private-active.png', label: '버튼1' },
+          { icon: '/icons/public.png',  activeIcon: '/icons/public-active.png', label: '버튼2' },
+          { label: '버튼3'}
+        ]}
       />
     </main>
   );
