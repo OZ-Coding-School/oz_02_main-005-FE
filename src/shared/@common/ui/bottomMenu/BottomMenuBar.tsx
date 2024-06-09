@@ -9,7 +9,7 @@ import {
   infoActiveIcon,
   libraryActiveIcon,
   plusActiveIcon,
-} from '../../../../public';
+} from '../../../../../public/icons/bottomMenuBar';
 import BottomButton from './BottomButton';
 
 function BottomMenuBar() {
