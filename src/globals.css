@@ -10,6 +10,7 @@
     box-sizing: border-box;
     word-break: keep-all;
     font-family: 'Noto Sans KR', sans-serif;
+    
   }
   
   *::before,
@@ -23,6 +24,7 @@
     text-size-adjust: none;
     -moz-text-size-adjust: none;
     -webkit-text-size-adjust: none;
+    
   }
   
   a,
@@ -66,5 +68,11 @@
   select {
     font-family: inherit;
     font-size: inherit;
+  }
+}
+
+@layer components {
+  .calc_h {
+    height: calc(100vh - 65px);
   }
 }
