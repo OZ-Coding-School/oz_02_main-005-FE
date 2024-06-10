@@ -3,6 +3,7 @@
 import Button from "@/shared/@common/ui/Button";
 import CancelSaveHeader from "@/shared/@common/ui/CancelSaveHeader";
 import Header from "@/shared/@common/ui/Header";
+import Tab from "@/shared/@common/ui/Tab";
 
 export default function Home() {
 
@@ -16,6 +17,10 @@ export default function Home() {
 
   const handleClick = () => {
     console.log("버튼클릭")
+  };
+
+  const handleTabClick = () => {
+    console.log("탭클릭")
   };
 
   return (
@@ -32,6 +37,12 @@ export default function Home() {
         pageName="카드 만들기"
         onCancel={handleCancel}
         onSave={handleSave}
+      />
+
+      Tab
+      <Tab 
+        tabs={['탭 1', '탭 2']} 
+        onClick={handleTabClick} 
       />
 
       xl-full
