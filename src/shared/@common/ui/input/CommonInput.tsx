@@ -2,7 +2,7 @@ import React from 'react';
 
 function CommonInput({ label, placeholder }: { label: string; placeholder: string }) {
   return (
-    <div className="flex flex-col w-[350px] h-[58px] text-10 font-medium justify-between">
+    <div className="flex flex-col w-full h-[58px] text-10 font-medium justify-between">
       <label htmlFor={label} className="text-gray6">
         {label}
       </label>
