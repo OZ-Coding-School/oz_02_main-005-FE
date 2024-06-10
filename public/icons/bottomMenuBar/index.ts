@@ -1,13 +1,13 @@
-import commIcon from '../public/icons/bottomMenuBar/passive/comm.png';
-import infoIcon from '../public/icons/bottomMenuBar/passive/info.png';
-import homeIcon from '../public/icons/bottomMenuBar/passive/home.png';
-import libraryIcon from '../public/icons/bottomMenuBar/passive/library.png';
-import plusIcon from '../public/icons/bottomMenuBar/passive/plus.png';
-import commActiveIcon from '../public/icons/bottomMenuBar/active/comm.png';
-import infoActiveIcon from '../public/icons/bottomMenuBar/active/info.png';
-import homeActiveIcon from '../public/icons/bottomMenuBar/active/home.png';
-import libraryActiveIcon from '../public/icons/bottomMenuBar/active/library.png';
-import plusActiveIcon from '../public/icons/bottomMenuBar/active/plus.png';
+import commIcon from '../bottomMenuBar/passive/comm.png';
+import infoIcon from '../bottomMenuBar/passive/info.png';
+import homeIcon from '../bottomMenuBar/passive/home.png';
+import libraryIcon from '../bottomMenuBar/passive/library.png';
+import plusIcon from '../bottomMenuBar/passive/plus.png';
+import commActiveIcon from '../bottomMenuBar/active/comm.png';
+import infoActiveIcon from '../bottomMenuBar/active/info.png';
+import homeActiveIcon from '../bottomMenuBar/active/home.png';
+import libraryActiveIcon from '../bottomMenuBar/active/library.png';
+import plusActiveIcon from '../bottomMenuBar/active/plus.png';
 
 export {
   commIcon,

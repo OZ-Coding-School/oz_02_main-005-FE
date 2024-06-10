@@ -51,6 +51,15 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      screens: {
+        sm: '390px',
+        md: '390px',
+        lg: '390px',
+        xl: '390px',
+      },
+      container: {
+        padding: '1.5rem',
+      },
     },
   },
   plugins: [],
