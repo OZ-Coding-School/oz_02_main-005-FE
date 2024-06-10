@@ -61,7 +61,7 @@ const config: Config = {
         xl: '390px',
       },
       container: {
-        padding: '1.5rem',
+        padding: '0 0.75rem',
       },
     },
   },
