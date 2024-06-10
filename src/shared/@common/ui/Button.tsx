@@ -31,7 +31,7 @@ const Button = ({ type, onClick, children, buttonContents = [] }: ButtonProps) =
 
   if (type === 'group') {
     return (
-      <div className="w-[390px] h-[48px] bg-white rounded-[12px] flex space-x-2 p-2">
+      <div className="w-[366px] h-[48px] bg-white rounded-[12px] flex space-x-2 p-2">
         {buttonContents.map((content, index) => {
           const isActive = activeButton === index;
           const iconSrc = isActive && content.activeIcon ? content.activeIcon : content.icon;
@@ -79,7 +79,7 @@ const Button = ({ type, onClick, children, buttonContents = [] }: ButtonProps) =
       </button>
     ) : type === 'xl-line-plus' ? (
       <button 
-        className="w-[367px] h-[44px] text-gray8 flex justify-center items-center outline outline-1 outline-grayc bg-white rounded-[6px] font-medium hover:text-text_primary hover:outline-black"
+        className="w-[366px] h-[44px] text-gray8 flex justify-center items-center outline outline-1 outline-grayc bg-white rounded-[6px] font-medium hover:text-text_primary hover:outline-black"
         onClick={() => onClick()}
       >
       <div className='w-[24px] h-[24px]'>
@@ -93,7 +93,7 @@ const Button = ({ type, onClick, children, buttonContents = [] }: ButtonProps) =
       </button>
     ) : type === 'l-card' ? (
       <button 
-        className="w-[390px] h-[36px] text-primary flex justify-center items-center bg-white rounded-[12px] font-medium hover:bg-grayc"
+        className="w-[366px] h-[36px] text-primary flex justify-center items-center bg-white rounded-[12px] font-medium hover:bg-grayc"
         onClick={() => onClick()}
       >
         <div className='flex items-center'>
@@ -110,7 +110,7 @@ const Button = ({ type, onClick, children, buttonContents = [] }: ButtonProps) =
       </button>
     ) : type === 'l-delete' ? (
       <button 
-        className="w-[390px] h-[36px] text-danger flex justify-center items-center bg-dangerlight rounded-[12px] font-medium hover:bg-dangergray outline outline-1 outline-red-500"
+        className="w-[366px] h-[36px] text-danger flex justify-center items-center bg-dangerlight rounded-[12px] font-medium hover:bg-dangergray outline outline-1 outline-red-500"
         onClick={() => onClick()}
       >
         {children}

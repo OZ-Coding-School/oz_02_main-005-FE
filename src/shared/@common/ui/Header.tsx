@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Header = () => {
   return (
-    <header className="w-[414px] h-[50px] pl-[12px] bg-white flex items-center justify-between ">
+    <header className="w-[390px] h-[50px] pl-[12px] bg-white flex items-center justify-between ">
       <div>
         <Image 
           src="/images/logo.png" 

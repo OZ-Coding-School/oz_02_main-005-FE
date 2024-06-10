@@ -7,7 +7,7 @@ type CancelSaveHeaderProps = {
 const CancelSaveHeader = ({ pageName, onCancel, onSave }: CancelSaveHeaderProps) => {
 
   return (
-    <header className="w-[414px] h-[50px] bg-gray flex items-center px-3">
+    <header className="w-[390px] h-[50px] bg-gray flex items-center px-3">
       <div className="flex justify-between items-center w-full">
         <button 
           className="text-16 text-gray8 font-bold w-[30px] hover:text-primary"
