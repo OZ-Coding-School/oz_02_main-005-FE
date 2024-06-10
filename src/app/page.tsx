@@ -3,6 +3,7 @@
 import Button from "@/shared/@common/ui/Button";
 import CancelSaveHeader from "@/shared/@common/ui/CancelSaveHeader";
 import Header from "@/shared/@common/ui/Header";
+import RatingStars from "@/shared/@common/ui/RatingStars";
 import Tab from "@/shared/@common/ui/Tab";
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
     console.log("탭클릭")
   };
 
+
   return (
     <main className="flex flex-col h-full gap-2 bg-gray p-10 items-center">
       <Header />
@@ -38,6 +40,9 @@ export default function Home() {
         onCancel={handleCancel}
         onSave={handleSave}
       />
+
+      RatingStars
+      <RatingStars />
 
       Tab
       <Tab 

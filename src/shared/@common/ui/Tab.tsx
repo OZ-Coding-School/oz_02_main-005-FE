@@ -22,6 +22,7 @@ const Tab = ({ tabs, onClick }: TabProps) => {
                       ${activeTab === index ? 'border-primary text-primary' : ''}`}
           onClick={() => handleTabClick(index)}
         >
+          
           {tab}
         </button>
       ))}
