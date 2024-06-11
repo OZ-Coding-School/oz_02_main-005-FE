@@ -6,13 +6,12 @@
   * {
     padding: 0;
     margin: 0;
-    /* border: 0; */
     box-sizing: border-box;
     word-break: keep-all;
     font-family: 'Noto Sans KR', sans-serif;
-    
   }
-  
+
+
   *::before,
   *::after {
     box-sizing: border-box;
@@ -72,7 +71,7 @@
 }
 
 @layer components {
-  .calc_h {
+  /* .calc_h {
     height: calc(100vh - 65px - 50px);
-  }
+  } */
 }

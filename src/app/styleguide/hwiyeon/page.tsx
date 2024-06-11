@@ -1,10 +1,10 @@
 'use client';
 
-import Button from "@/shared/@common/ui/Button/Button";
-import CancelSaveHeader from "@/shared/@common/ui/Header/CancelSaveHeader";
-import Header from "@/shared/@common/ui/Header/Header";
-import RatingStars from "@/shared/@common/ui/RatingStars/RatingStars";
-import Tab from "@/shared/@common/ui/Tab/Tab";
+import Button from "@/shared/@common/ui/button/Button";
+import CancelSaveHeader from "@/shared/@common/ui/header/CancelSaveHeader";
+import Header from "@/shared/@common/ui/header/Header";
+import RatingStars from "@/shared/@common/ui/ratingStars/RatingStars";
+import Tab from "@/shared/@common/ui/tab/Tab";
 
 export default function StyleGuide() {
 
@@ -26,7 +26,7 @@ export default function StyleGuide() {
 
 
   return (
-    <main className="flex flex-col h-full gap-2 bg-gray p-10 items-center">
+    <main className="flex flex-col h-full pt-16 gap-3 bg-gray p-10 items-center">
       <Header />
 
       <CancelSaveHeader 
