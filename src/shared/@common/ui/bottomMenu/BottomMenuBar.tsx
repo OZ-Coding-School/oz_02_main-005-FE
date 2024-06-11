@@ -1,43 +1,27 @@
 'use client';
 import { useRouter } from 'next/navigation';
-import {
-  commActiveIcon,
-  commIcon,
-  homeActiveIcon,
-  homeIcon,
-  infoActiveIcon,
-  infoIcon,
-  libActiveIcon,
-  libIcon,
-  plusActiveIcon,
-  plusIcon,
-} from '../../../../../public/icons/bottomMenuBar';
+import { homeIcon, commIcon, infoIcon, libIcon, plusIcon } from '../../../../../public/icons/bottomMenuBar';
 import BottomButton from './BottomButton';
 
 const BUTTON_PROPS = [
   {
-    passiveIcon: homeIcon,
-    activeIcon: homeActiveIcon,
-    url: '/',
+    Icon: homeIcon,
+    url: '/home',
   },
   {
-    passiveIcon: commIcon,
-    activeIcon: commActiveIcon,
+    Icon: commIcon,
     url: '/comm',
   },
   {
-    passiveIcon: plusIcon,
-    activeIcon: plusActiveIcon,
+    Icon: plusIcon,
     url: '/plus',
   },
   {
-    passiveIcon: libIcon,
-    activeIcon: libActiveIcon,
+    Icon: libIcon,
     url: '/lib',
   },
   {
-    passiveIcon: infoIcon,
-    activeIcon: infoActiveIcon,
+    Icon: infoIcon,
     url: '/info',
   },
 ];
@@ -47,11 +31,10 @@ function BottomMenuBar() {
 
   return (
     <div className="w-[390px] h-[65px] bg-white flex justify-between items-center px-[1.5625rem] fixed bottom-0 z-10">
-      {BUTTON_PROPS.map(({ passiveIcon, activeIcon, url }) => (
+      {BUTTON_PROPS.map(({ Icon, url }) => (
         <BottomButton
           key={url}
-          passiveIcon={passiveIcon}
-          activeIcon={activeIcon}
+          Icon={Icon}
           onClick={e => {
             e.preventDefault;
             router.push(url);
