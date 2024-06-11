@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 type TabProps = {
   tabs: string[];
-  onClick: (index: number) => void;
+  onClick?: (index: number) => void;
 };
 
 const Tab = ({ tabs, onClick }: TabProps) => {
@@ -10,11 +10,13 @@ const Tab = ({ tabs, onClick }: TabProps) => {
 
   const handleTabClick = (index: number) => {
     setActiveTab(index);
-    onClick(index);
+    if (onClick) {
+      onClick(index); 
+    }
   };
 
   return (
-    <div className="flex w-[366px] justify-between">
+    <div className="flex w-[370px] justify-between">
       {tabs.map((tab, index) => (
         <button
           key={index}
