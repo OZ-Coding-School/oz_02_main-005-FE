@@ -1,10 +1,10 @@
 'use client';
 
-import Button from "@/shared/@common/ui/Button";
-import CancelSaveHeader from "@/shared/@common/ui/CancelSaveHeader";
-import Header from "@/shared/@common/ui/Header";
-import RatingStars from "@/shared/@common/ui/RatingStars";
-import Tab from "@/shared/@common/ui/Tab";
+import Button from "@/shared/@common/ui/Button/Button";
+import CancelSaveHeader from "@/shared/@common/ui/Header/CancelSaveHeader";
+import Header from "@/shared/@common/ui/Header/Header";
+import RatingStars from "@/shared/@common/ui/RatingStars/RatingStars";
+import Tab from "@/shared/@common/ui/Tab/Tab";
 
 export default function StyleGuide() {
 
