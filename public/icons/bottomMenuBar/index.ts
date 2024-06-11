@@ -1,23 +1,7 @@
-import commIcon from '../bottomMenuBar/passive/comm.png';
-import infoIcon from '../bottomMenuBar/passive/info.png';
-import homeIcon from '../bottomMenuBar/passive/home.png';
-import libIcon from '../bottomMenuBar/passive/library.png';
-import plusIcon from '../bottomMenuBar/passive/plus.png';
-import commActiveIcon from '../bottomMenuBar/active/comm.png';
-import infoActiveIcon from '../bottomMenuBar/active/info.png';
-import homeActiveIcon from '../bottomMenuBar/active/home.png';
-import libActiveIcon from '../bottomMenuBar/active/library.png';
-import plusActiveIcon from '../bottomMenuBar/active/plus.png';
+import commIcon from '../bottomMenuBar/comm.svg';
+import infoIcon from '../bottomMenuBar/info.svg';
+import homeIcon from '../bottomMenuBar/home.svg';
+import libIcon from '../bottomMenuBar/lib.svg';
+import plusIcon from '../bottomMenuBar/plus.svg';
 
-export {
-  commIcon,
-  infoIcon,
-  homeIcon,
-  libIcon,
-  plusIcon,
-  commActiveIcon,
-  homeActiveIcon,
-  infoActiveIcon,
-  libActiveIcon,
-  plusActiveIcon,
-};
+export { commIcon, infoIcon, homeIcon, libIcon, plusIcon };
