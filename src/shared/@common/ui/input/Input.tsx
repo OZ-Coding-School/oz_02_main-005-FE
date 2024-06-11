@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CommonInput({ label, placeholder }: { label: string; placeholder: string }) {
+function Input({ label, placeholder }: { label: string; placeholder: string }) {
   return (
     <div className="flex flex-col w-full h-[58px] text-10 font-medium justify-between">
       <label htmlFor={label} className="text-gray6">
@@ -16,4 +16,4 @@ function CommonInput({ label, placeholder }: { label: string; placeholder: strin
   );
 }
 
-export default CommonInput;
+export default Input;
