@@ -1,9 +1,9 @@
 import React from 'react';
-import PointListPage from '@/views/MyPage/PointListPage';
+import AccountDeletePage from '@/views/MyPage/AccountDeletePage';
 
 const Page = () => {
   return ( 
-  <PointListPage />
+  <AccountDeletePage />
   )
 };
 

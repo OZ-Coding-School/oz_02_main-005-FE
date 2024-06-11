@@ -1,14 +1,13 @@
 'use client';
 
 import BottomMenuBar from '@/shared/@common/ui/bottomMenu/BottomMenuBar';
-import React, { useState } from 'react';
 import ProfileAvatar from '../ProfileAvatar';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const MyPage = () => {
   //TODO: userId, nickname, email, point
-  const [userId] = useState<string>('vocca');
+  const userId = 'vocca';
   const userNickName = 'vocca1';
   const userEmail = 'vocca@email.com';
   const userPoint = '200';
@@ -19,7 +18,7 @@ const MyPage = () => {
         <div className="flex flex-col flex-grow gap-[30px] items-center">
           <div className='flex flex-col space-y-1'>
             <ProfileAvatar />
-            {userId && <p className="font-medium text-center">{userId}</p>}
+            <p className="font-medium text-center">{userId}</p>
           </div>
           <div className='flex flex-col bg-white pt-[15px] border border-grayc rounded-[15px]'>
             <div className='w-[350px] pb-[10px] px-[15px] border-b border-grayc'>
@@ -78,7 +77,7 @@ const MyPage = () => {
               </div>
             </div>
           </div>
-          <div className='flex items-center w-[350px] h-[62px] text-14 pl-[15px] pr-[10px] bg-white border border-grayc rounded-[15px] justify-between'>
+          <div className='flex items-center w-[350px] h-[62px] text-14 pl-[15px] pr-[10px] bg-white border border-grayc rounded-[15px] justify-between hover:border-black'>
             <p>내 포인트</p>
             <Link href='/pointlist'>
               <div className='relative flex items-center space-x-3 cursor-pointer'>
@@ -93,18 +92,20 @@ const MyPage = () => {
               </div>
             </Link>  
           </div>
-          <div className='flex w-[350px] h-[62px] items-center text-14 pl-[15px] pr-[10px] bg-white border border-grayc rounded-[15px] justify-between'>
+          <div className='flex w-[350px] h-[62px] items-center text-14 pl-[15px] pr-[10px] bg-white border border-grayc rounded-[15px] justify-between hover:border-black'>
             <p>설정</p>
-            <div className='relative flex items-center space-x-3 cursor-pointer'>
-              <Image 
-                src="/icons/right-arrow-black.png" 
-                alt="edit" 
-                width={18}
-                height={16} 
-                priority 
-                // onClick={}
-              />
-            </div>
+            <Link href='/settings'>
+              <div className='relative flex items-center space-x-3 cursor-pointer'>
+                <Image 
+                  src="/icons/right-arrow-black.png" 
+                  alt="edit" 
+                  width={18}
+                  height={16} 
+                  priority 
+                  // onClick={}
+                />
+              </div>
+            </Link>
           </div>
         </div>
       </div>

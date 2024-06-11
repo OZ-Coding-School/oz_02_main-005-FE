@@ -5,7 +5,7 @@ import Button from '@/shared/@common/ui/button/Button';
 import Tab from '@/shared/@common/ui/tab/Tab';
 import { useState } from 'react';
 
-const PointList = () => {
+const PointListPage = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (index: number) => {
@@ -78,4 +78,4 @@ const PointList = () => {
   );
 };
 
-export default PointList;
+export default PointListPage;

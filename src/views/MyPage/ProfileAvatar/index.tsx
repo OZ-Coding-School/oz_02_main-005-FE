@@ -25,7 +25,7 @@ const ProfileAvatar = ({ className = '' }: ProfileAvatarProps) => {
         className="object-cover" 
       />
       <div
-        className="absolute bottom-0 left-0 w-full h-1/2 bg-black bg-opacity-50 flex items-center justify-center opacity-10 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+        className="absolute bottom-0 left-0 w-full h-1/2 bg-black bg-opacity-70 flex items-center justify-center opacity-10 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
         onClick={handleAvatarClick}
       >
         <div className='relative'>

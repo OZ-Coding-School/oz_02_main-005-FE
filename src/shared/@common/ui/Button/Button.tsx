@@ -11,7 +11,7 @@ type ButtonContent = {
 };
 
 type ButtonProps = {
-  type: 'xl-full' | 'xl-full-white' | 'xl-full-primary' | 'xl-line' | 'xl-line-plus' | 'l-card' | 'l-delete' | 'l-rewrite' | 'm-line' | 'm-more' | 's-more' | 'xs-more' | 's-full' | 'xs-full' | 'black' | 'back' | 'group';
+  type: 'xl-full' | 'xl-full-white' | 'xl-full-primary' | 'xl-line' | 'xl-line-primary' | 'xl-line-plus' | 'l-card' | 'l-delete' | 'l-rewrite' | 'm-line' | 'm-more' | 's-more' | 'xs-more' | 's-full' | 'xs-full' | 'black' | 'back' | 'group';
   onClick?: (index?: number) => void;
   children?: React.ReactNode;
   buttonContents?: ButtonContent[];
@@ -80,6 +80,7 @@ const Button = ({ type, onClick, children, buttonContents = [], ...props }: Butt
     'xl-full-white': buttonClassName('w-[350px] h-[56px] text-primary bg-white rounded-[6px] font-medium hover:text-text_primary hover:bg-grayc'),
     'xl-full-primary': buttonClassName('w-[350px] h-[56px] text-white bg-primary rounded-[6px] font-medium hover:text-text_primary'),
     'xl-line': buttonClassName('w-[350px] h-[56px] text-gray8 outline outline-1 outline-grayc bg-white rounded-[6px] font-medium hover:text-text_primary hover:outline-black'),
+    'xl-line-primary': buttonClassName('w-[350px] h-[56px] text-gray8 outline outline-1 outline-grayc bg-white rounded-[6px] font-medium hover:text-white hover:bg-primary'),
     'xl-line-plus': buttonClassName('w-[366px] h-[44px] text-gray8 flex justify-center items-center outline outline-1 outline-grayc bg-white rounded-[6px] font-medium hover:text-text_primary hover:outline-black'),
     'l-card': buttonClassName('w-[366px] h-[36px] text-primary flex justify-center items-center bg-white rounded-[12px] font-medium hover:bg-grayc'),
     'l-delete': buttonClassName('w-[366px] h-[36px] text-danger flex justify-center items-center bg-dangerlight rounded-[12px] font-medium hover:bg-dangergray outline outline-1 outline-red-500'),
