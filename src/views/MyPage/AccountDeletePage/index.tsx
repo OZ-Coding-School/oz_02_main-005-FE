@@ -2,9 +2,6 @@
 
 import BottomMenuBar from '@/shared/@common/ui/bottomMenu/BottomMenuBar';
 import Button from '@/shared/@common/ui/button/Button';
-import Toggle from '@/shared/@common/ui/toggle/Toggle';
-import Image from 'next/image';
-import Link from 'next/link';
 
 const AccountDeletePage = () => {
 

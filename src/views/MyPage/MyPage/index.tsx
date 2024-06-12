@@ -10,7 +10,7 @@ const MyPage = () => {
   const userId = 'vocca';
   const userNickName = 'vocca1';
   const userEmail = 'vocca@email.com';
-  const userPoint = '200';
+  const userPoint = '125';
   
   return (
     <main className="flex flex-col items-center min-h-screen">
