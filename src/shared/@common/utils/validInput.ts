@@ -13,17 +13,17 @@ export default function validInput(path: string, type: string, input: string, cu
   // path: login/ signUp/ rename
   if (path === 'login') {
     switch (type) {
-      case 'id':
+      case 'account':
         return isIdExists;
       case 'password':
         return isPasswordExists;
     }
   } else if (path === 'signUp') {
     switch (type) {
-      case 'id':
+      case 'account':
         return hasEnglish && hasNumber && !isIdExists;
       case 'nickname':
-        return hasEnglish && hasNumber;
+        return hasEnglish;
       case 'password':
         return hasEnglish && hasNumber && hasSpecialChar && isLong;
       case 'check_password':

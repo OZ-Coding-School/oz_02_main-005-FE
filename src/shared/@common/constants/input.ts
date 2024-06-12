@@ -1,11 +1,11 @@
-export const LOGIN_INPUT_PROPS = [
+export const SIGN_UP_INPUT_PROPS = [
   {
     label: '아이디',
     placeholder: '아이디를 입력해주세요.',
     errormessage: '필수 항목',
     type: 'text',
-    path: 'rename',
-    contentType: 'id',
+    path: 'signUp',
+    name: 'account',
   },
   {
     label: '닉네임',
@@ -13,7 +13,7 @@ export const LOGIN_INPUT_PROPS = [
     errormessage: '필수 항목',
     type: 'text',
     path: 'signUp',
-    contentType: 'nickname',
+    name: 'nickname',
   },
   {
     label: '비밀번호',
@@ -21,7 +21,7 @@ export const LOGIN_INPUT_PROPS = [
     errormessage: '필수 항목',
     type: 'password',
     path: 'signUp',
-    contentType: 'password',
+    name: 'password',
   },
   {
     label: '비밀번호 확인',
@@ -29,7 +29,7 @@ export const LOGIN_INPUT_PROPS = [
     errormessage: '필수 항목',
     type: 'password',
     path: 'signUp',
-    contentType: 'check_password',
+    name: 'check_password',
   },
   {
     label: '이메일',
@@ -37,6 +37,6 @@ export const LOGIN_INPUT_PROPS = [
     errormessage: '필수 항목',
     type: 'email',
     path: 'signUp',
-    contentType: 'email',
+    name: 'email',
   },
 ];
