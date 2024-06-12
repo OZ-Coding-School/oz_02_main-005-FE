@@ -4,6 +4,8 @@ import BottomMenuBar from '@/shared/@common/ui/bottomMenu/BottomMenuBar';
 import ProfileAvatar from '../ProfileAvatar';
 import Image from 'next/image';
 import Link from 'next/link';
+import Modal from '@/shared/@common/ui/modal';
+import { useState } from 'react';
 
 const MyPage = () => {
   //TODO: userId, nickname, email, point
@@ -11,6 +13,19 @@ const MyPage = () => {
   const userNickName = 'vocca1';
   const userEmail = 'vocca@email.com';
   const userPoint = '125';
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState<React.ReactNode>(null);
+
+  const handleOpenModal = (content: React.ReactNode) => {
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setModalContent(null);
+  };
   
   return (
     <main className="flex flex-col items-center min-h-screen">
@@ -32,7 +47,12 @@ const MyPage = () => {
               </div>
               <div 
                 className='relative flex items-center cursor-pointer'
-                //onClick
+                onClick={() => handleOpenModal(
+                  <div>
+                    <p className="font-medium">닉네임 변경</p>
+                    TODO: 인풋
+                  </div>
+                )}
               >
                 <Image 
                   src="/icons/edit-black.png" 
@@ -50,7 +70,12 @@ const MyPage = () => {
               </div> 
               <div 
                 className='relative flex items-center cursor-pointer'
-                //onClick
+                onClick={() => handleOpenModal(
+                  <div>
+                    <p className="font-medium">이메일 변경</p>
+                    TODO: 인풋
+                  </div>
+                )}
               >
                 <Image 
                   src="/icons/edit-black.png" 
@@ -65,7 +90,12 @@ const MyPage = () => {
               <p className='text-14'>비밀번호</p>
               <div 
                 className='relative flex items-center cursor-pointer'
-                //onClick
+                onClick={() => handleOpenModal(
+                  <div>
+                    <p className="font-medium">비밀번호 변경</p>
+                    TODO: 인풋
+                  </div>
+                )}
               >
                 <Image 
                   src="/icons/edit-black.png" 
@@ -102,7 +132,6 @@ const MyPage = () => {
                   width={18}
                   height={16} 
                   priority 
-                  // onClick={}
                 />
               </div>
             </Link>
@@ -110,6 +139,12 @@ const MyPage = () => {
         </div>
       </div>
       <BottomMenuBar />
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal}
+      >
+        {modalContent}
+      </Modal>
     </main>
   );
 };

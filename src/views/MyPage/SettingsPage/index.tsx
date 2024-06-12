@@ -2,11 +2,33 @@
 
 import BottomMenuBar from '@/shared/@common/ui/bottomMenu/BottomMenuBar';
 import Button from '@/shared/@common/ui/button/Button';
+import Modal from '@/shared/@common/ui/modal';
 import Toggle from '@/shared/@common/ui/toggle/Toggle';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 const SettingsPage = () => {
+  const router = useRouter();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState<React.ReactNode>(null);
+
+  const handleOpenModal = (content: React.ReactNode) => {
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setModalContent(null);
+  };
+
+  //TODO: 비밀번호 확인 로직
+  const handleConfirm = () => {
+    router.push('/accountdelete');
+  };
+  
 
   return (
     <main className="flex flex-col items-center min-h-screen">
@@ -51,15 +73,29 @@ const SettingsPage = () => {
                 로그아웃
               </Button>
             </div>
-            <Link href="/accountdelete">
-              <Button type='xl-line-primary'>
-                계정삭제
-              </Button>
-            </Link>
+            <Button 
+              type='xl-line-primary'
+              onClick={() => handleOpenModal(
+                <div>
+                  <p className="font-medium">비밀번호 입력</p>
+                  <p className="text-14 text-gray6">본인확인을 위해 비밀번호를 입력하세요.</p>
+                  TODO: 인풋
+                </div>
+              )}
+            >
+              계정삭제
+            </Button>
           </div>
         </div>
       </div>
       <BottomMenuBar />
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={handleCloseModal}
+        onConfirm={handleConfirm}
+      >
+        {modalContent}
+      </Modal>
     </main>
   );
 };

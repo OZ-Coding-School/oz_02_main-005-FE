@@ -11,7 +11,7 @@ const ProfileEditPage = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [selectedAvatar, setSelectedAvatar] = useState<number | null>(null);
 
-    //TODO: 임시 아바타 조회데이터 
+  //TODO: 임시 아바타 조회데이터 
   const [avatars, setAvatars] = useState<string[]>([
     '/images/avatar1.png',
     '/images/avatar2.png',
@@ -29,7 +29,6 @@ const ProfileEditPage = () => {
       setSelectedAvatar(0); 
     }
   }, []);
-
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
