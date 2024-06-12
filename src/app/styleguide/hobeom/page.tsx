@@ -10,39 +10,44 @@ import { useState } from 'react';
 
 const Page = () => {
   const [isValid, setIsValid] = useState<ValidationState>({
-    id: true,
+    account: true,
     nickname: true,
     password: true,
     check_password: true,
     email: true,
   });
   const [input, setInput] = useState<InputState>({
-    id: '',
+    account: '',
     nickname: '',
     password: '',
     check_password: '',
     email: '',
   });
 
-  function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>, path: string, type: string, inputValue: string) {
-    if (e.target) setInput(state => ({ ...state, [type]: inputValue }));
-    setIsValid(state => ({ ...state, [type]: validInput(path, type, inputValue) }));
+  function handleChangeInput(
+    e: React.ChangeEvent<HTMLInputElement>,
+    path: string,
+    contentType: string,
+    inputValue: string,
+  ) {
+    if (e.target) setInput(state => ({ ...state, [contentType]: inputValue }));
+    setIsValid(state => ({ ...state, [contentType]: validInput(path, contentType, inputValue) }));
   }
 
   return (
     <BaseFrame>
       <CardListItem constructor="호범" count={5} description="영어 회화 초급자를 위한 영단어" title="영어 회화 단어" />
-      {LOGIN_INPUT_PROPS.map(({ errormessage, label, path, placeholder, type }) => (
+      {LOGIN_INPUT_PROPS.map(({ errormessage, label, path, placeholder, type, contentType }) => (
         <Input
           key={label}
-          value={input[type]}
+          value={input[contentType]}
           label={label}
           placeholder={placeholder}
           type={type}
           path={path}
-          isValid={isValid[type]}
+          isValid={isValid[contentType]}
           errormessage={errormessage}
-          onChange={e => handleChangeInput(e, path, type, e.target.value)}
+          onChange={e => handleChangeInput(e, path, contentType, e.target.value)}
         />
       ))}
 

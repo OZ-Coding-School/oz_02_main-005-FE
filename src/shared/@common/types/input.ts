@@ -1,5 +1,5 @@
 interface ValidationState {
-  id: boolean;
+  account: boolean;
   nickname: boolean;
   password: boolean;
   check_password: boolean;
@@ -8,7 +8,7 @@ interface ValidationState {
 }
 
 interface InputState {
-  id: string;
+  account: string;
   nickname: string;
   password: string;
   email: string;
