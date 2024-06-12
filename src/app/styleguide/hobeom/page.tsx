@@ -25,12 +25,17 @@ const Page = () => {
     email: '',
   });
 
-  function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>, path: string, name: string, inputValue: string) {
+  function handleChangeInput(
+    e: React.ChangeEvent<HTMLInputElement>,
+    path: string,
+    name: string,
+    inputValue: string,
+    currentPassword: string,
+  ) {
     if (e.target) setInput(state => ({ ...state, [name]: inputValue }));
-    setIsValid(state => ({ ...state, [name]: validInput(path, name, inputValue) }));
+    setIsValid(state => ({ ...state, [name]: validInput(path, name, inputValue, currentPassword) }));
   }
   async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
-    'use server';
     e.preventDefault();
     const fd = new FormData();
     const data = Object.fromEntries(fd.entries());
@@ -54,7 +59,7 @@ const Page = () => {
             label={label}
             type={type}
             placeholder={placeholder}
-            onChange={e => handleChangeInput(e, path, name, e.target.value)}
+            onChange={e => handleChangeInput(e, path, name, e.target.value, input.password)}
             path={path}
             isValid={isValid[name]}
             errormessage={errormessage}
