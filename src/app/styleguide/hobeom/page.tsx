@@ -31,7 +31,7 @@ const page = () => {
 
   return (
     <BaseFrame>
-      <CardListItem />
+      <CardListItem constructor="호범" count={5} description="영어 회화 초급자를 위한 영단어" title="영어 회화 단어" />
       {LOGIN_INPUT_PROPS.map(({ errormessage, label, path, placeholder, type }) => (
         <Input
           key={label}
