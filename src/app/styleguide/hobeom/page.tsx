@@ -8,7 +8,7 @@ import SlideButton from '@/shared/@common/ui/slideButton/SlideButton';
 import validInput from '@/shared/@common/utils/validInput';
 import { useState } from 'react';
 
-const page = () => {
+const Page = () => {
   const [isValid, setIsValid] = useState<ValidationState>({
     id: true,
     nickname: true,
@@ -51,4 +51,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
