@@ -1,6 +1,7 @@
 'use client';
 
-import { LOGIN_INPUT_PROPS } from '@/shared/@common/constants/input';
+import { SIGN_UP_INPUT_PROPS } from '@/shared/@common/constants/input';
+import Button from '@/shared/@common/ui/Button/Button';
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
 import CardListItem from '@/shared/@common/ui/cardListItem/CardListItem';
 import Input from '@/shared/@common/ui/input/Input';
@@ -24,33 +25,45 @@ const Page = () => {
     email: '',
   });
 
-  function handleChangeInput(
-    e: React.ChangeEvent<HTMLInputElement>,
-    path: string,
-    contentType: string,
-    inputValue: string,
-  ) {
-    if (e.target) setInput(state => ({ ...state, [contentType]: inputValue }));
-    setIsValid(state => ({ ...state, [contentType]: validInput(path, contentType, inputValue) }));
+  function handleChangeInput(e: React.ChangeEvent<HTMLInputElement>, path: string, name: string, inputValue: string) {
+    if (e.target) setInput(state => ({ ...state, [name]: inputValue }));
+    setIsValid(state => ({ ...state, [name]: validInput(path, name, inputValue) }));
+  }
+  async function handleSignUp(e: React.FormEvent<HTMLFormElement>) {
+    'use server';
+    e.preventDefault();
+    const fd = new FormData();
+    const data = Object.fromEntries(fd.entries());
+    // const res = await signUp(data);
+    // if(res.success) {
+    //   redirect('/home');
+    // } else {
+    //   redirect('/signUp')
+    // }
   }
 
   return (
     <BaseFrame>
       <CardListItem constructor="호범" count={5} description="영어 회화 초급자를 위한 영단어" title="영어 회화 단어" />
-      {LOGIN_INPUT_PROPS.map(({ errormessage, label, path, placeholder, type, contentType }) => (
-        <Input
-          key={label}
-          value={input[contentType]}
-          label={label}
-          placeholder={placeholder}
-          type={type}
-          path={path}
-          isValid={isValid[contentType]}
-          errormessage={errormessage}
-          onChange={e => handleChangeInput(e, path, contentType, e.target.value)}
-        />
-      ))}
-
+      <form onSubmit={handleSignUp}>
+        {SIGN_UP_INPUT_PROPS.map(({ errormessage, label, path, placeholder, type, name }) => (
+          <Input
+            key={label}
+            name={name}
+            value={input[name] || ''}
+            label={label}
+            type={type}
+            placeholder={placeholder}
+            onChange={e => handleChangeInput(e, path, name, e.target.value)}
+            path={path}
+            isValid={isValid[name]}
+            errormessage={errormessage}
+          />
+        ))}
+        <Button type="xl-full" onClick={() => {}}>
+          로그인
+        </Button>
+      </form>
       <SlideButton />
     </BaseFrame>
   );
