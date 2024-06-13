@@ -12,7 +12,7 @@ const PlusPage = () => {
     setIsModalOpen(false);
   }
   function handleClickCardDeckButton() {
-    router.push('/plus/cardDeck');
+    router.push('/plus/cardDeck/new');
     setIsModalOpen(false);
   }
   return (
