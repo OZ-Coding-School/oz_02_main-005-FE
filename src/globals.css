@@ -71,7 +71,7 @@
 }
 
 @layer components {
-  /* .calc_h {
-    height: calc(100vh - 65px - 50px);
-  } */
+  .calc_h {
+    min-height: calc(100vh - 65px);
+  }
 }

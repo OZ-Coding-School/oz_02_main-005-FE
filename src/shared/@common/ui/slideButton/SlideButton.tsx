@@ -1,14 +1,30 @@
 'use client';
-import RightButton from './RightButton';
-import LeftButton from './LeftButton';
+import { LeftButtonIcon, RightButtonIcon } from '../../../../../public/icons/SlideButton';
 
 function SlideButton() {
-  function handleSlideOnLeft() {}
-  function handleSlideOnRight() {}
+  function handleSlide(direction: string) {
+    if (direction === 'left') {
+    } else {
+    }
+  }
+  const BUTTON_ICONS = [
+    {
+      ButtonIcon: LeftButtonIcon,
+      onClick: () => handleSlide('left'),
+    },
+    {
+      ButtonIcon: RightButtonIcon,
+      onClick: () => handleSlide('right'),
+    },
+  ];
+
   return (
     <div className="w-full h-[50px] gap-[2.25rem] flex justify-center">
-      <LeftButton onClick={handleSlideOnLeft} />
-      <RightButton onClick={handleSlideOnRight} />
+      {BUTTON_ICONS.map(({ ButtonIcon, onClick }, idx) => (
+        <button onClick={onClick} key={idx} className="w-[3.125rem] h-[3.125rem]  flex justify-center items-center">
+          <ButtonIcon className={'fill-gray6 hover:fill-primary'} />
+        </button>
+      ))}
     </div>
   );
 }
