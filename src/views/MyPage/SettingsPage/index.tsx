@@ -1,13 +1,14 @@
 'use client';
 
 import BottomMenuBar from '@/shared/@common/ui/bottomMenu/BottomMenuBar';
-import Button from '@/shared/@common/ui/button/Button';
 import Modal from '@/shared/@common/ui/modal';
 import Toggle from '@/shared/@common/ui/toggle/Toggle';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Button from '@/shared/@common/ui/button/Button';
+
 
 const SettingsPage = () => {
   const router = useRouter();

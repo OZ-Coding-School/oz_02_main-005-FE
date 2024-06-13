@@ -1,7 +1,5 @@
 'use client';
 
-import Button from '@/shared/@common/ui/button/Button';
-import Link from 'next/link';
 import React from 'react';
 
 const ComfirmEmailPage = () => {
