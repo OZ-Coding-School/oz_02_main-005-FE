@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Button from '@/shared/@common/ui/button/Button';
+import Button from '../button/Button';
 
 type ModalProps = {
   isOpen: boolean;

@@ -1,8 +1,9 @@
 'use client';
 
 import { SIGN_UP_INPUT_PROPS } from '@/shared/@common/constants/input';
-import Button from '@/shared/@common/ui/Button/Button';
+
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
+import Button from '@/shared/@common/ui/button/Button';
 import CardListItem from '@/shared/@common/ui/cardListItem/CardListItem';
 import Input from '@/shared/@common/ui/input/Input';
 import SlideButton from '@/shared/@common/ui/slideButton/SlideButton';
