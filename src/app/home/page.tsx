@@ -1,7 +1,8 @@
+import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
 import React from 'react';
 
 const HomePage = () => {
-  return <div>홈 페이지</div>;
+  return <BaseFrame>홈</BaseFrame>;
 };
 
 export default HomePage;
