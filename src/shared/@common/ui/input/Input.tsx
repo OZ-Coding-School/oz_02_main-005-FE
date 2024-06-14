@@ -1,18 +1,19 @@
 import React, { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  path: string;
   label?: string;
   isValid: boolean;
-  errormessage: string;
+  errorMessage: string;
 }
 
-function Input({ path, label, isValid, ...props }: InputProps) {
+function Input({ label, isValid, errorMessage, ...props }: InputProps) {
   return (
-    <div className="flex flex-col w-[366px] h-[74px] text-10 font-medium justify-start gap-[2px] ">
-      <label id={label} htmlFor={label} className={`text-gray6 h-[15px]`}>
-        {path === 'rename' ? '' : label}
-      </label>
+    <div className="flex flex-col w-[366px] h-[65px] text-10 font-medium justify-start gap-[2px] relative">
+      {label && (
+        <label id={label} htmlFor={label} className={`text-gray6 h-[15px]`}>
+          {label}
+        </label>
+      )}
       <input
         id={label}
         name={label}
@@ -22,8 +23,8 @@ function Input({ path, label, isValid, ...props }: InputProps) {
         {...props}
       />
       {!isValid && (
-        <label id={label} htmlFor={label} className="text-danger">
-          {props.errormessage}
+        <label id={label} htmlFor={label} className="text-danger h-[15px]">
+          {errorMessage}
         </label>
       )}
     </div>

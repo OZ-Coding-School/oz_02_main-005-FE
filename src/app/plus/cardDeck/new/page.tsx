@@ -23,18 +23,16 @@ const PlusCardDeckPage = () => {
     <>
       <Input
         label="자신만의 카드뭉치를 만들어보세요!"
-        errormessage="필수 항목"
+        errorMessage="필수 항목"
         isValid={isValid.title}
-        path="create"
         placeholder="제목을 입력해주세요."
         onChange={e => handleChange(e, 'title')}
         value={input.title || ''}
       />
       <Input
         label="설명"
-        errormessage="최대 45글자 이하로 작성해주세요."
+        errorMessage="최대 45글자 이하로 작성해주세요."
         isValid={isValid.description}
-        path="create"
         placeholder="설명을 입력해주세요."
         onChange={e => handleChange(e, 'description')}
         value={input.description || ''}
