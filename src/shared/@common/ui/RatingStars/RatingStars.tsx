@@ -7,8 +7,8 @@ type RatingStarsProps = {
 };
 
 const RatingStars = ({ totalStars = 5, onRatingChange = () => {} }: RatingStarsProps) => {
-  const [rating, setRating] = useState<number>(0);
-  const [hover, setHover] = useState<number>(0);
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
 
   const handleClick = (index: number) => {
     setRating(index);

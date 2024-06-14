@@ -8,32 +8,28 @@ type ModalProps = {
   onClose?: () => void;
   onConfirm?: () => void;
   children?: React.ReactNode;
+  confirmLabel?: string; 
+  closeLabel?: string; 
 };
 
-const Modal = ({ isOpen, onClose, onConfirm, children }: ModalProps) => {
+const Modal = ({ isOpen, onClose, onConfirm, children, closeLabel = "취소" }: ModalProps) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
-      setShouldRender(true);
-      setTimeout(() => {
-        setIsVisible(true);
-      }, 10);
+      setIsVisible(true);
     } else {
       setIsVisible(false);
-      setShouldRender(false);
     }
   }, [isOpen]);
 
-
   return (
     <>
-      {shouldRender && (
+      {isOpen && (
         <div className="fixed inset-0 z-50 flex items-end justify-center">
           <div 
-            className={`fixed inset-0 bg-black transition-opacity duration-400 ${
-              isVisible ? 'opacity-30' : 'opacity-0'
+            className={`fixed inset-0 bg-black transition-opacity duration-300 ${
+              isOpen ? 'opacity-30' : 'opacity-0'
             }`}
             onClick={onClose} 
           />
@@ -45,7 +41,7 @@ const Modal = ({ isOpen, onClose, onConfirm, children }: ModalProps) => {
             <div className='px-1'>
               {children}
             </div>
-            <div className="space-y-3 flex flex-col items-center">
+            <div className="space-y-3 flex flex-col items-center pt-[15px]">
               <Button 
                 type="xl-full"
                 onClick={onConfirm}
@@ -56,7 +52,7 @@ const Modal = ({ isOpen, onClose, onConfirm, children }: ModalProps) => {
                 type="xl-line" 
                 onClick={onClose}
               >
-                취소
+                {closeLabel}
               </Button>
             </div>
           </div>

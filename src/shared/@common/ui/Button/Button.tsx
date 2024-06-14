@@ -18,8 +18,8 @@ type ButtonProps = {
 }
 
 const Button = ({ type, onClick, children, buttonContents = [], ...props }: ButtonProps) => {
-  const [activeButton, setActiveButton] = useState<number>(0);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [activeButton, setActiveButton] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const router = useRouter();
 
   const handleClick = (index?: number) => {

@@ -9,7 +9,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 function Input({ path, label, isValid, ...props }: InputProps) {
   return (
-    <div className="flex flex-col w-[366px] h-[74px] text-10 font-medium justify-start gap-[2px]">
+    <div className="flex flex-col w-[350px] h-[74px] text-10 font-medium justify-start gap-[2px]">
       <label htmlFor={label} className={`text-gray6 h-[15px]`}>
         {path === 'rename' ? '' : label}
       </label>

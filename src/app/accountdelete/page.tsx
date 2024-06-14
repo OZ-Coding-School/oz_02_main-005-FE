@@ -3,7 +3,7 @@ import AccountDeletePage from '@/views/MyPage/AccountDeletePage';
 
 const Page = () => {
   return ( 
-  <AccountDeletePage />
+    <AccountDeletePage />
   )
 };
 

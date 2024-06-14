@@ -3,7 +3,7 @@ import LoginPage from '@/views/auth/LoginPage';
 
 const Page = () => {
   return ( 
-  <LoginPage />
+    <LoginPage />
   )
 };
 
