@@ -3,6 +3,7 @@ import React from 'react';
 import FolderListItem from '@/shared/library/FolderListItem';
 import Button from '@/shared/@common/ui/button/Button';
 
+
 function handlePlusButtonClick() {}
 
 const LibraryFoldersPage = () => {
