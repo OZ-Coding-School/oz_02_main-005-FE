@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     colors: {
       primary: '#956BED',
+      primarylight: '#F6EFFF',
       white: '#FFFFFF',
       muted: '#BDBDBD',
       success: '#2DC071',
