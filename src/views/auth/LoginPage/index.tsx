@@ -84,22 +84,20 @@ const LoginPage = () => {
   };
 
   const isFormValid = () => {
-    return modalType !== null && isValid[modalType] && input[modalType];
+    return isValid.email && input.email;
   };
 
   const handleConfirm = () => {
     if (isFormValid() && modalType !== null) {
-      const data = { [modalType]: input[modalType] };
+      const data = { email: input.email }; 
       console.log('Submit data:', data);
-
-      if (modalType === 'email') setEmailSent(true);
+      setEmailSent(true);
     }
   };
 
   const handleResendEmail = () => {
     alert(`등록된 이메일: ${input.email} 로 재발송`);
     console.log(`이메일 재발송: ${input.email}`);
-    
     //TODO: 이메일 다시 보내는 로직
     setIsModalOpen(false);
   };
@@ -107,7 +105,10 @@ const LoginPage = () => {
   const modalContent = () => {
     return (
       <div>
-        <p className="font-medium">{modalType === 'email' ? '아이디 찾기' : '비밀번호 찾기'}</p>
+        <p className="font-medium">
+        {modalType === 'email' ? '아이디 찾기' : '비밀번호 찾기'}
+          {/* {modalType === 'email' ? '아이디 찾기' : modalType === 'password' ? '비밀번호 찾기' : ''} */}
+        </p>
         <p className="font-regular text-12 text-gray6 pb-[10px]">이메일 주소를 입력해주세요.</p>
         {emailSent ? (
           <p className="font-regular text-14 text-gray6">{input.email}로 이메일을 발송했습니다. <br/>메일함을 확인해주세요.</p>
@@ -211,8 +212,8 @@ const LoginPage = () => {
       </div>
       <Modal 
         isOpen={isModalOpen} 
-        onClose={emailSent && modalType === 'email' ? handleResendEmail : handleCloseModal}
-        onConfirm={emailSent && modalType === 'email' ? handleCloseModal: handleConfirm}
+        onClose={emailSent ? handleResendEmail : handleCloseModal}
+        onConfirm={emailSent ? handleCloseModal: handleConfirm}
         closeLabel={emailSent ? "다시보내기" : "취소"}
       >
         {modalContent()}

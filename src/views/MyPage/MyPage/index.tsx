@@ -93,8 +93,9 @@ const MyPage = () => {
     if (isFormValid() && modalType !== null) {
       const data = { [modalType]: input[modalType] };
       console.log('Submit data:', data);
+
+      if (modalType === 'email') setEmailSent(true);
     }
-    if (modalType === 'email') setEmailSent(true);
   };
 
   const handleResendEmail = () => {
