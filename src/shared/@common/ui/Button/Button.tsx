@@ -11,42 +11,24 @@ type ButtonContent = {
 };
 
 type ButtonProps = {
-  type:
-    | 'xl-full'
-    | 'xl-full-white'
-    | 'xl-full-primary'
-    | 'xl-line'
-    | 'xl-line-primary'
-    | 'xl-line-plus'
-    | 'l-card'
-    | 'l-delete'
-    | 'l-select'
-    | 'l-rewrite'
-    | 'm-line'
-    | 'm-more'
-    | 's-more'
-    | 'xs-more'
-    | 's-full'
-    | 'xs-full'
-    | 'black'
-    | 'back'
-    | 'group';
-  onClick?: (index?: number) => void;
+  type: 'xl-full' | 'xl-full-white' | 'xl-full-primary' | 'xl-line' | 'xl-line-primary' | 'xl-line-plus' | 'l-card' | 'l-delete' | 'l-rewrite' | 'm-line' | 'm-more' | 's-more' | 'xs-more' | 's-full' | 'xs-full' | 'black' | 'back' | 'group';
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
   buttonContents?: ButtonContent[];
 };
 
 const Button = ({ type, onClick, children, buttonContents = [], ...props }: ButtonProps) => {
-  const [activeButton, setActiveButton] = useState<number>(0);
-  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [activeButton, setActiveButton] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
   const router = useRouter();
 
-  const handleClick = (index?: number) => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>, index?: number) => {
     if (type === 'group') {
       setActiveButton(index as number);
     }
     if (onClick) {
-      onClick(index);
+      onClick(event); 
+
     }
     if (type === 'back') {
       router.back();
@@ -72,8 +54,10 @@ const Button = ({ type, onClick, children, buttonContents = [], ...props }: Butt
               className={`flex-1 h-full rounded-[8px] font-medium flex items-center 
                           ${content.icon ? 'justify-evenly pr-8' : 'justify-center'} 
                           ${isActive ? 'bg-gray text-primary' : 'bg-white text-gray8'}`}
-              onClick={() => handleClick(index)}
-              {...props}>
+
+              onClick={(event) => handleClick(event, index)}
+              {...props}
+            >
               {iconSrc && (
                 <div className="relative w-[30px] h-[30px]">
                   <Image src={iconSrc} alt="icon" fill />
@@ -139,7 +123,7 @@ const Button = ({ type, onClick, children, buttonContents = [], ...props }: Butt
   return (
     <button
       className={buttonVariants[type]}
-      onClick={() => handleClick()}
+      onClick={(event) => handleClick(event)}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       {...props}>

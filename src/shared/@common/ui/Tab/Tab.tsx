@@ -6,7 +6,7 @@ type TabProps = {
 };
 
 const Tab = ({ tabs, onClick }: TabProps) => {
-  const [activeTab, setActiveTab] = useState<number>(0);
+  const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (index: number) => {
     setActiveTab(index);

@@ -3,7 +3,7 @@ import PointListPage from '@/views/MyPage/PointListPage';
 
 const Page = () => {
   return ( 
-  <PointListPage />
+    <PointListPage />
   )
 };
 

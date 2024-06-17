@@ -3,7 +3,7 @@ import ComfirmEmailPage from '@/views/auth/ComfirmEmailPage';
 
 const Page = () => {
   return ( 
-  <ComfirmEmailPage />
+    <ComfirmEmailPage />
   )
 };
 

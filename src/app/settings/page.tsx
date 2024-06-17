@@ -3,7 +3,7 @@ import SettingsPage from '@/views/MyPage/SettingsPage';
 
 const Page = () => {
   return ( 
-  <SettingsPage />
+    <SettingsPage />
   )
 };
 

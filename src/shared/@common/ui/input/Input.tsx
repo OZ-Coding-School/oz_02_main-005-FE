@@ -9,6 +9,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 function Input({ label, errorMessage, isValid = true, width = '366px', ...props }: InputProps) {
   return (
+
     <div className={`flex flex-col h-[65px] text-10 font-medium justify-start gap-[2px] relative w-[${width}]`}>
       {label && (
         <label id={label} htmlFor={label} className={`text-gray6 h-[15px]`}>
