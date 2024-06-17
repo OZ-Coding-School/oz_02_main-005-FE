@@ -1,8 +1,8 @@
 import React from 'react';
 import SlideButton from '../@common/ui/slideButton/SlideButton';
-import Button from '../@common/ui/Button/Button';
 import { EditIcon } from '../../../public/icons/lib';
 import { useParams, usePathname, useRouter } from 'next/navigation';
+import Button from '../@common/ui/button/Button';
 interface CardDeckInfoProps {
   constructor: string;
 }
