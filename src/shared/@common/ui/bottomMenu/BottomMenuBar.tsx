@@ -18,7 +18,7 @@ const BUTTON_PROPS = [
   },
   {
     Icon: libIcon,
-    url: '/lib',
+    url: '/lib/folders',
   },
   {
     Icon: infoIcon,
