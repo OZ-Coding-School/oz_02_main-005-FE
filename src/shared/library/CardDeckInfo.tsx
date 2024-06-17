@@ -2,19 +2,24 @@ import React from 'react';
 import SlideButton from '../@common/ui/slideButton/SlideButton';
 import Button from '../@common/ui/Button/Button';
 import { EditIcon } from '../../../public/icons/lib';
-import { useParams } from 'next/navigation';
-
+import { useParams, usePathname, useRouter } from 'next/navigation';
 interface CardDeckInfoProps {
   constructor: string;
 }
 
 const CardDeckInfo = ({ constructor }: CardDeckInfoProps) => {
+  const router = useRouter();
+  const pathName = usePathname();
   const params = useParams();
   const deckName = Array.isArray(params.deckName) ? params.deckName[0] : params.deckName;
   const decodeFolderName = decodeURIComponent(deckName);
 
-  function handleClickStudyModeButton() {}
-  function handleClickTestModeButton() {}
+  function handleClickStudyModeButton() {
+    router.push(`${pathName}/study`);
+  }
+  function handleClickTestModeButton() {
+    router.push(`${pathName}/test`);
+  }
   return (
     <div className="flex flex-col gap-[0.75rem]">
       <div className="w-full h-[3.75rem] flex flex-col justify-between">
