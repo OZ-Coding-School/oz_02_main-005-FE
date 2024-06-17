@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Button from '@/shared/@common/ui/Button/Button';
-
+import Button from '../button/Button';
 
 type ModalProps = {
   isOpen: boolean;
@@ -33,7 +32,6 @@ const Modal = ({ isOpen, onClose, onConfirm, children, closeLabel = "취소", co
           <div 
             className={`fixed inset-0 bg-black transition-opacity duration-300 ${
               isOpen ? 'opacity-30' : 'opacity-0'
-
             }`}
             onClick={onClose}
           />
@@ -50,16 +48,14 @@ const Modal = ({ isOpen, onClose, onConfirm, children, closeLabel = "취소", co
                 type="xl-full"
                 onClick={onConfirm}
               >
-              <!--{contents.first} -->
-                확인
+                {contents?.first || '확인'}
               </Button>
               <Button 
                 type="xl-line" 
                 onClick={onClose}
               >
-                <!--{contents.second} -->
-                {closeLabel}
-             </Button>
+                {contents?.second || closeLabel}
+              </Button>
             </div>
           </div>
         </div>

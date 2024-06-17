@@ -1,10 +1,11 @@
 'use client';
-import Button from '@/shared/@common/ui/Button/Button';
+
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { GptIcon } from '../../../../../public/icons/create';
+import Button from '@/shared/@common/ui/button/Button';
 
 const GptPage = () => {
   const router = useRouter();
