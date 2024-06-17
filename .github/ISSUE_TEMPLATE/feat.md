@@ -1,9 +1,9 @@
 ---
-name: Feature Template
+name: feature Template
 about: 기능 추가 이슈 템플릿
-title: "[feat] ..."
-labels: "feat"
-assignees: ""
+title: '[feat] ...'
+labels: 'feat'
+assignees: ''
 ---
 
 ## 😁어떤 기능인가요?
