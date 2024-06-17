@@ -2,13 +2,11 @@
 
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
-import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { GptIcon } from '../../../../../public/icons/create';
 import Button from '@/shared/@common/ui/button/Button';
 
 const GptPage = () => {
-  const router = useRouter();
   const [input, setInput] = useState({
     title: '',
     description: '',
@@ -46,9 +44,8 @@ const GptPage = () => {
         </div>
         <Input
           label="카테고리"
-          errormessage="필수 항목"
+          errorMessage="필수 항목"
           isValid={isValid.title}
-          path="create"
           placeholder="카테고리를 입력해주세요."
           onChange={e => handleChange(e, 'title')}
           value={input.title || ''}
