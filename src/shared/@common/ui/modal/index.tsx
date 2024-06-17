@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Button from '../button/Button';
+import Button from '@/shared/@common/ui/Button/Button';
+
 
 type ModalProps = {
   isOpen: boolean;
@@ -10,9 +11,11 @@ type ModalProps = {
   children?: React.ReactNode;
   confirmLabel?: string; 
   closeLabel?: string; 
+  contents?: { first: string; second: string };
 };
 
-const Modal = ({ isOpen, onClose, onConfirm, children, closeLabel = "취소" }: ModalProps) => {
+const Modal = ({ isOpen, onClose, onConfirm, children, closeLabel = "취소", contents }: ModalProps) => {
+
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -30,8 +33,9 @@ const Modal = ({ isOpen, onClose, onConfirm, children, closeLabel = "취소" }: 
           <div 
             className={`fixed inset-0 bg-black transition-opacity duration-300 ${
               isOpen ? 'opacity-30' : 'opacity-0'
+
             }`}
-            onClick={onClose} 
+            onClick={onClose}
           />
           <div
             className={`w-full bg-white p-[15px] rounded-t-[15px] z-50 max-w-[390px] mx-auto transform transition-transform duration-300 ease-in-out ${
@@ -46,14 +50,16 @@ const Modal = ({ isOpen, onClose, onConfirm, children, closeLabel = "취소" }: 
                 type="xl-full"
                 onClick={onConfirm}
               >
+              <!--{contents.first} -->
                 확인
               </Button>
               <Button 
                 type="xl-line" 
                 onClick={onClose}
               >
+                <!--{contents.second} -->
                 {closeLabel}
-              </Button>
+             </Button>
             </div>
           </div>
         </div>

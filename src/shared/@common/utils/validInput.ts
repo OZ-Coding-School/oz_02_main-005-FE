@@ -40,6 +40,13 @@ export default function validInput(path: string, type: string, input: string, cu
       case 'check_password':
         return currentPassword === input;
     }
+  } else if (path === 'create') {
+    switch (type) {
+      case 'title':
+        return input.trim() !== ''; //비어있지 않으면 유효
+      case 'description':
+        return input.length <= 45;
+    }
   }
   return true;
 }

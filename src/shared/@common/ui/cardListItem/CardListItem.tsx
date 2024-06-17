@@ -1,5 +1,6 @@
 import React from 'react';
 import RatingStars from '../RatingStars/RatingStars';
+import { usePathname, useRouter } from 'next/navigation';
 
 interface CardListItemProps {
   title: string;
@@ -9,8 +10,16 @@ interface CardListItemProps {
 }
 
 function CardListItem({ title, count, description, constructor }: CardListItemProps) {
+  const router = useRouter();
+  const currentPath = usePathname();
+
+  function handleClickCardListItem() {
+    router.push(`${currentPath}/${title}`);
+  }
   return (
-    <div className="w-[366px] h-[10rem] bg-white rounded-[4px] flex flex-col m-[1rem] gap-[1.5rem] p-[0.75rem]">
+    <div
+      onClick={handleClickCardListItem}
+      className="w-[366px] h-[10rem] bg-white rounded-[4px] flex flex-col m-[1rem] gap-[1.5rem] p-[0.75rem] outline outline-1 outline-grayc hover:outline-black">
       <div className="w-full flex flex-col gap-[1.5rem]">
         <div className="flex items-center justify-between">
           <p className="font-medium text-24">{title}</p>
