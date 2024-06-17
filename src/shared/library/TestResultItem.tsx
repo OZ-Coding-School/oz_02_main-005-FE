@@ -1,5 +1,4 @@
 import React from 'react';
-import Button from '../@common/ui/Button/Button';
 import ChoiceItem from './ChoiceItem';
 
 interface TestResultsItemProps {

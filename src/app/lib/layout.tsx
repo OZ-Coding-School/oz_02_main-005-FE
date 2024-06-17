@@ -1,6 +1,6 @@
 'use client';
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
-import Tab from '@/shared/@common/ui/tab/Tab';
+import Tab from '@/shared/@common/ui/Tab/Tab';
 import { usePathname, useRouter } from 'next/navigation';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
