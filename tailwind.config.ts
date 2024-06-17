@@ -14,6 +14,7 @@ const config: Config = {
       white: '#FFFFFF',
       muted: '#BDBDBD',
       success: '#2DC071',
+      successlight: '#F2FFF7',
       danger: '#E74040',
       dangerlight: '#FFDEDE',
       dangergray: '#DCBCBC',
