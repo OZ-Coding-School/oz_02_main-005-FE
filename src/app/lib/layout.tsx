@@ -6,7 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const pathName = usePathname();
-  const isStudyMode = pathName.endsWith('study') || pathName.endsWith('test');
+  const isStudyMode = pathName.endsWith('study') || pathName.endsWith('test') || pathName.endsWith('result');
 
   function handleTabClick(idx: number) {
     switch (idx) {
