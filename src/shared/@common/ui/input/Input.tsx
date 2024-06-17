@@ -2,13 +2,14 @@ import React, { InputHTMLAttributes } from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  isValid: boolean;
-  errorMessage: string;
+  errorMessage?: string;
+  isValid?: boolean;
+  width?: string;
 }
 
-function Input({ label, isValid, errorMessage, ...props }: InputProps) {
+function Input({ label, errorMessage, isValid = true, width = '366px', ...props }: InputProps) {
   return (
-    <div className="flex flex-col w-[366px] h-[65px] text-10 font-medium justify-start gap-[2px] relative">
+    <div className={`flex flex-col h-[65px] text-10 font-medium justify-start gap-[2px] relative w-[${width}]`}>
       {label && (
         <label id={label} htmlFor={label} className={`text-gray6 h-[15px]`}>
           {label}
