@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Button from '@/shared/@common/ui/Button/Button';
 
+
 type ModalProps = {
   isOpen: boolean;
   onClose?: () => void;
