@@ -7,9 +7,10 @@ interface CardListItemProps {
   count: number;
   description: string;
   constructor: string;
+  stars: number;
 }
 
-function CardListItem({ title, count, description, constructor }: CardListItemProps) {
+function CardListItem({ title, count, description, constructor, stars }: CardListItemProps) {
   const router = useRouter();
   const currentPath = usePathname();
 
@@ -29,7 +30,7 @@ function CardListItem({ title, count, description, constructor }: CardListItemPr
       </div>
       <div className="flex gap-[0.5rem] items-center justify-between">
         <p className="text-12 text-text_primary">{constructor}</p>
-        <RatingStars />
+        <RatingStars initialStars={stars} />
       </div>
     </div>
   );

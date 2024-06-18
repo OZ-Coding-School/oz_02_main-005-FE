@@ -30,7 +30,7 @@ function BottomMenuBar() {
   const router = useRouter();
 
   return (
-    <div className="w-[390px] h-[65px] bg-white flex justify-between items-center px-[1.5625rem] fixed bottom-0 z-10">
+    <div className="w-[390px] h-[65px] bg-white flex justify-between items-center px-[1.5625rem] fixed bottom-0 z-10 shadow-md">
       {BUTTON_PROPS.map(({ Icon, url }) => (
         <BottomButton
           key={url}

@@ -44,7 +44,14 @@ const CardDeckListPage = ({ listTitle, cardDeckList }: CardDeckListPageProps) =>
         <SearchInput value={searchInput || ''} placeholder={'검색어를 입력하세요.'} onChange={handleChangeInput} />
         <SelectListButton title={listTitle} onClick={handleSelect} />
         {CARD_DECK_LISTS.map(({ title, constructor, count, description, stars }, idx) => (
-          <CardListItem description={description} constructor={constructor} count={count} title={title} key={idx} />
+          <CardListItem
+            stars={stars}
+            description={description}
+            constructor={constructor}
+            count={count}
+            title={title}
+            key={idx}
+          />
         ))}
       </div>
       <SelectModal
