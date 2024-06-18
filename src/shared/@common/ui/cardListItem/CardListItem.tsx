@@ -19,7 +19,7 @@ function CardListItem({ title, count, description, constructor }: CardListItemPr
   return (
     <div
       onClick={handleClickCardListItem}
-      className="w-[366px] h-[10rem] bg-white rounded-[4px] flex flex-col m-[1rem] gap-[1.5rem] p-[0.75rem] outline outline-1 outline-grayc hover:outline-black">
+      className="w-[366px] h-[10rem] bg-white rounded-[4px] flex flex-col gap-[1.5rem] p-[0.75rem] outline outline-1 outline-grayc hover:outline-black">
       <div className="w-full flex flex-col gap-[1.5rem]">
         <div className="flex items-center justify-between">
           <p className="font-medium text-24">{title}</p>

@@ -52,7 +52,7 @@ const Page = () => {
     <BaseFrame>
       <CardListItem constructor="호범" count={5} description="영어 회화 초급자를 위한 영단어" title="영어 회화 단어" />
       <form onSubmit={handleSignUp}>
-        {SIGN_UP_INPUT_PROPS.map(({ errormessage, label, path, placeholder, type, name }) => (
+        {SIGN_UP_INPUT_PROPS.map(({ errorMessage, label, placeholder, type, name }) => (
           <Input
             key={label}
             name={name}
@@ -60,10 +60,9 @@ const Page = () => {
             label={label}
             type={type}
             placeholder={placeholder}
-            onChange={e => handleChangeInput(e, path, name, e.target.value, input.password)}
-            path={path}
+            onChange={e => handleChangeInput(e, 'signUp', name, e.target.value, input.password)}
             isValid={isValid[name]}
-            errormessage={errormessage}
+            errorMessage={errorMessage}
           />
         ))}
         <Button type="xl-full" onClick={() => {}}>

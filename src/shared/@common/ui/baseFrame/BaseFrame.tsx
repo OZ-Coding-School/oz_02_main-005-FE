@@ -12,7 +12,7 @@ interface FrameProps {
 }
 function BaseFrame({ children, headerType = 'basic', pageName, onCancel, onSave }: FrameProps) {
   return (
-    <main className="relative flex flex-col items-center justify-between min-h-screen">
+    <main className="relative flex flex-col items-center justify-between min-h-screen py-[0.75rem]">
       {headerType === 'basic' && <Header />}
       {pageName && onCancel && onSave && headerType === 'cancelSave' && (
         <CancelSaveHeader pageName={pageName} onCancel={onCancel} onSave={onSave} />
