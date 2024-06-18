@@ -49,13 +49,12 @@ const LoginPage = () => {
 
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLInputElement>,
-    path: string,
     name: string,
     inputValue: string,
     currentPassword?: string,
   ) => {
     if (e.target) setInput(state => ({ ...state, [name]: inputValue }));
-    setIsValid(state => ({ ...state, [name]: validInput(path, name, inputValue, currentPassword || '') }));
+    setIsValid(state => ({ ...state, [name]: validInput( name, inputValue, currentPassword || '') }));
   };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -120,11 +119,11 @@ const LoginPage = () => {
               label={inputProps.email.label}
               type={inputProps.email.type}
               placeholder={inputProps.email.placeholder}
-              onChange={e => handleChangeInput(e, inputProps.email.path, inputProps.email.name, e.target.value)}
-              path={inputProps.email.path}
+              onChange={e => handleChangeInput(e, inputProps.email.name, e.target.value)}
               isValid={isValid.email}
               // errormessage={inputProps.email.errormessage}
-              errormessage={input.email && !isValid.email ? inputProps.email.errormessage : ''}
+              errorMessage={input.email && !isValid.email ? inputProps.email.errorMessage : ''}
+              width='350px'
             />
           </form>
         )}
@@ -162,10 +161,10 @@ const LoginPage = () => {
                 label="아이디 또는 이메일"
                 type={inputProps.account.type}
                 placeholder="아이디 또는 이메일을 입력해주세요."
-                onChange={e => handleChangeInput(e, inputProps.account.path, inputProps.account.name, e.target.value)}
-                path={inputProps.account.path}
+                onChange={e => handleChangeInput(e, inputProps.account.name, e.target.value)}
                 isValid={isValid.account}
-                errormessage={inputProps.account.errormessage}
+                errorMessage={inputProps.account.errorMessage}
+                width='350px'
               />
               <Input
                 name={inputProps.password.name}
@@ -173,10 +172,10 @@ const LoginPage = () => {
                 label={inputProps.password.label}
                 type={inputProps.password.type}
                 placeholder={inputProps.password.placeholder}
-                onChange={e => handleChangeInput(e, inputProps.password.path, inputProps.password.name, e.target.value)}
-                path={inputProps.password.path}
+                onChange={e => handleChangeInput(e, inputProps.password.name, e.target.value)}
                 isValid={isValid.password}
-                errormessage={inputProps.password.errormessage}
+                errorMessage={inputProps.password.errorMessage}
+                width='350px'
               />
             </form>
           </div>

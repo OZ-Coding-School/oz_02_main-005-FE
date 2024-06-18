@@ -9,12 +9,15 @@ import Modal from '@/shared/@common/ui/modal';
 import { useState, useEffect } from 'react';
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
+import { getUser, UserInfo } from '@/apis/getUser';
 
 const MyPage = () => {
-  // TODO: userId, nickname, email, point
-  const userId = 'vocca';
-  const userNickName = 'vocca1';
-  const userEmail = 'vocca@email.com';
+  const [user, setUser] = useState<UserInfo>({
+    account: '',
+    email: '',
+    password: '',
+    nickname: ''
+  });
   const userPoint = '125';
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,6 +43,15 @@ const MyPage = () => {
   });
 
   useEffect(() => {
+    const fetchUser = async () => {
+      const userData = await getUser();
+      setUser(userData);
+    };
+
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
     if (!isModalOpen) {
       setInput({
         account: '',
@@ -56,13 +68,12 @@ const MyPage = () => {
 
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLInputElement>,
-    path: string,
     name: string,
-    inputValue: string,
     currentPassword?: string,
   ) => {
-    if (e.target) setInput(state => ({ ...state, [name]: inputValue }));
-    setIsValid(state => ({ ...state, [name]: validInput(path, name, inputValue, currentPassword || '') }));
+    const inputValue = e.target.value;
+    setInput(state => ({ ...state, [name]: inputValue }));
+    setIsValid(state => ({ ...state, [name]: validInput(name, inputValue, currentPassword || '') }));
   };
 
   const handleOpenModal = (type: string) => {
@@ -94,7 +105,13 @@ const MyPage = () => {
       const data = { [modalType]: input[modalType] };
       console.log('Submit data:', data);
 
-      if (modalType === 'email') setEmailSent(true);
+      if (modalType === 'email') {
+        setUser((prevUser: UserInfo) => ({ ...prevUser, email: input.email }));
+        setEmailSent(true);
+      } else if (modalType === 'nickname') {
+        setUser((prevUser: UserInfo) => ({ ...prevUser, nickname: input.nickname }));
+        setIsModalOpen(false); 
+      }
     }
   };
 
@@ -118,17 +135,17 @@ const MyPage = () => {
         return (
           <div>
             <p className="font-medium pb-[15px]">닉네임 변경</p>
-            <form id="nickname" >
+            <form id="nickname">
               <Input
-                name={input.name}
+                name={inputProps.nickname.name}
                 value={input.nickname}
                 label={inputProps.nickname.label}
                 type={inputProps.nickname.type}
-                placeholder={userNickName} 
-                onChange={e => handleChangeInput(e, inputProps.nickname.path, inputProps.nickname.name, e.target.value)}
-                path={inputProps.nickname.path}
+                placeholder={user.nickname}
+                onChange={e => handleChangeInput(e, inputProps.nickname.name)}
                 isValid={isValid.nickname}
-                errormessage={inputProps.nickname.errormessage}
+                errorMessage={inputProps.nickname.errorMessage}
+                width='350px'
               />
             </form>
           </div>
@@ -146,13 +163,13 @@ const MyPage = () => {
                   value={input.email}
                   label={inputProps.email.label}
                   type={inputProps.email.type}
-                  placeholder={userEmail}
-                  onChange={e => handleChangeInput(e, inputProps.email.path, inputProps.email.name, e.target.value)}
-                  path={inputProps.email.path}
+                  placeholder={user.email}
+                  onChange={e => handleChangeInput(e, inputProps.email.name)}
                   isValid={isValid.email}
-                  errormessage={inputProps.email.errormessage}
+                  errorMessage={inputProps.email.errorMessage}
+                  width='350px'
                 />
-            </form>
+              </form>
             )}
           </div>
         );
@@ -162,38 +179,38 @@ const MyPage = () => {
             <p className="font-medium pb-[15px]">비밀번호 변경</p>
             <form id="password" className="flex flex-col gap-[10px]">
             <Input
-                name={inputProps.password.name}
-                value={input.password}
-                label="현재 비밀번호" 
-                type="password"
-                placeholder="현재 비밀번호를 입력하세요"
-                onChange={e => handleChangeInput(e, inputProps.password.path, inputProps.password.name, e.target.value)}
-                path={inputProps.password.path}
-                isValid={isValid.password}
-                errormessage={inputProps.password.errormessage}
-              />
-              <Input
-                name="new_password"
-                value={input.new_password}
-                label="새 비밀번호"
-                type="password"
-                placeholder="새 비밀번호를 입력하세요"
-                onChange={e => handleChangeInput(e, inputProps.password.path, 'new_password', e.target.value)}
-                path={inputProps.password.path}
-                isValid={isValid.new_password}
-                errormessage="새 비밀번호를 입력하세요"
-              />
-              <Input
-                name="check_new_password"
-                value={input.check_new_password}
-                label="새 비밀번호 확인"
-                type="password"
-                placeholder="새 비밀번호를 다시 입력하세요"
-                onChange={e => handleChangeInput(e, inputProps.password.path, 'check_new_password', e.target.value, input.new_password)}
-                path={inputProps.password.path}
-                isValid={isValid.check_new_password}
-                errormessage="비밀번호가 일치하지 않습니다"
-              />
+              name={inputProps.password.name}
+              value={input.password}
+              label="현재 비밀번호" 
+              type="password"
+              placeholder="현재 비밀번호를 입력하세요"
+              onChange={e => handleChangeInput(e, inputProps.password.name)}
+              isValid={isValid.password}
+              errorMessage={inputProps.password.errorMessage}
+              width='350px'
+            />
+            <Input
+              name="new_password"
+              value={input.new_password}
+              label="새 비밀번호"
+              type="password"
+              placeholder="새 비밀번호를 입력하세요"
+              onChange={e => handleChangeInput(e, 'new_password')}
+              isValid={isValid.new_password}
+              errorMessage="새 비밀번호를 입력하세요"
+              width='350px'
+            />
+            <Input
+              name="check_new_password"
+              value={input.check_new_password}
+              label="새 비밀번호 확인"
+              type="password"
+              placeholder="새 비밀번호를 다시 입력하세요"
+              onChange={e => handleChangeInput(e, 'check_new_password', input.new_password)}
+              isValid={isValid.check_new_password}
+              errorMessage="비밀번호가 일치하지 않습니다"
+              width='350px'
+            />
             </form>
           </div>
         );
@@ -208,17 +225,17 @@ const MyPage = () => {
         <div className="flex flex-col flex-grow gap-[30px] items-center">
           <div className='flex flex-col space-y-1'>
             <ProfileAvatar />
-            <p className="font-medium text-center">{userId}</p>
+            <p className="font-medium text-center">{user.account}</p>
           </div>
           <div className='flex flex-col bg-white pt-[15px] border border-grayc rounded-[15px]'>
             <div className='w-[350px] pb-[10px] px-[15px] border-b border-grayc'>
               <p className='text-14'>아이디</p>
-              <p className='text-gray6 text-14'>{userId}</p>
+              <p className='text-gray6 text-14'>{user.account}</p>
             </div>
             <div className='w-[350px] p-[10px] px-[15px] border-b border-grayc flex justify-between'>
               <div className='flex flex-col'>
                 <p className='text-14'>닉네임</p>
-                <p className='text-gray6 text-14'>{userNickName}</p>
+                <p className='text-gray6 text-14'>{user.nickname}</p>
               </div>
               <div 
                 className='relative flex items-center cursor-pointer'
@@ -236,7 +253,7 @@ const MyPage = () => {
             <div className='w-[350px] p-[10px] px-[15px] border-b border-grayc flex justify-between'>
               <div className='flex flex-col'>
                 <p className='text-14'>이메일</p>
-                <p className='text-gray6 text-14'>{userEmail}</p>
+                <p className='text-gray6 text-14'>{user.email}</p>
               </div> 
               <div 
                 className='relative flex items-center cursor-pointer'
