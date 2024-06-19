@@ -1,29 +1,12 @@
-'use client';
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
-import Modal from '@/shared/@common/ui/modal';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react';
+import PlusPage from '@/views/plus/PlusPage';
 
-const PlusPage = () => {
-  const [isModalOpen, setIsModalOpen] = useState(true);
-  const router = useRouter();
-  function handleClickFolderButton() {
-    router.push('/plus/folder');
-    setIsModalOpen(false);
-  }
-  function handleClickCardDeckButton() {
-    router.push('/plus/cardDeck/new');
-    setIsModalOpen(false);
-  }
+const Page = () => {
   return (
     <BaseFrame>
-      <Modal
-        isOpen={isModalOpen}
-        onConfirm={handleClickFolderButton}
-        onClose={handleClickCardDeckButton}
-        contents={{ first: '폴더', second: '카드 뭉치' }}></Modal>
+      <PlusPage />
     </BaseFrame>
   );
 };
 
-export default PlusPage;
+export default Page;

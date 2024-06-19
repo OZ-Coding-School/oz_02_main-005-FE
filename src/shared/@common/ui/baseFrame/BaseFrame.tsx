@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import BottomMenuBar from '../bottomMenu/BottomMenuBar';
 import Header from '../Header/Header';
@@ -12,7 +13,7 @@ interface FrameProps {
 }
 function BaseFrame({ children, headerType = 'basic', pageName, onCancel, onSave }: FrameProps) {
   return (
-    <main className="relative flex flex-col items-center justify-between min-h-screen py-[0.75rem]">
+    <main className="relative flex flex-col items-center justify-between min-h-screen">
       {headerType === 'basic' && <Header />}
       {pageName && onCancel && onSave && headerType === 'cancelSave' && (
         <CancelSaveHeader pageName={pageName} onCancel={onCancel} onSave={onSave} />
