@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import RatingStars from '../@common/ui/RatingStars/RatingStars';
 import CommentItem from './CommentItem';
+import Button from '../@common/ui/button/Button';
+import WriteArea from './WriteArea';
 
 interface CommentAreaProps {
   comment: string;
@@ -14,13 +16,30 @@ const CommentArea = ({ comment, reply, creationTime }: CommentAreaProps) => {
       <p className="w-full text-start text-16 font-bold">댓글</p>
 
       <div className="bg-white w-[22.875rem] rounded-[0.25rem] p-[0.75rem] flex flex-col  gap-[0.5rem]">
-        <CommentItem comment={comment} creationTime={creationTime} />
-        <CommentItem comment={comment} creationTime={creationTime} />
-        <CommentItem comment={comment} creationTime={creationTime} />
+        <CommentItem
+          writer="호범"
+          replies={['좋아요', '멋져요']}
+          comment={comment}
+          creationTime={creationTime}
+          replyCount={2}
+        />
+        <CommentItem
+          writer="호범"
+          replies={['좋아요', '멋져요']}
+          comment={comment}
+          creationTime={creationTime}
+          replyCount={2}
+        />
+        <CommentItem
+          writer="호범"
+          replies={['좋아요', '멋져요']}
+          comment={comment}
+          creationTime={creationTime}
+          replyCount={2}
+        />
       </div>
-      <div className="bg-white w-[22.875rem] rounded-[0.25rem] flex flex-col gap-[0.5rem]">
-        <RatingStars initialStars={0} />
-      </div>
+
+      <WriteArea type="comment" />
     </div>
   );
 };
