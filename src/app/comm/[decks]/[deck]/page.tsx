@@ -1,4 +1,4 @@
-import CardDeckItemPage from '@/views/community/CardDeckItemPage';
+import CardDeckItemPage from '@/views/comm/CardDeckItemPage';
 import React from 'react';
 
 const page = () => {

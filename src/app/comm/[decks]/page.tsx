@@ -1,5 +1,5 @@
 'use client';
-import CardDeckListPage from '@/views/community/CardDeckListPage';
+import CardDeckListPage from '@/views/comm/CardDeckListPage';
 import { usePathname } from 'next/navigation';
 import React from 'react';
 

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import Button from '../@common/ui/button/Button';
 import CardDeckItem from './CardDeckItem';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface CardDeckListProps {
   title: keyof typeof listType;
@@ -16,7 +17,6 @@ const listType = {
   '신규카드 뭉치': 'new',
   '많이 저장한 카드 뭉치': 'download',
 };
-
 
 const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDeckListProps) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -56,7 +56,9 @@ const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDe
       <div className="flex justify-between font-bold">
         <p className="text-20 text-text_primary">{title}</p>
         <Link href={moreLink}>
-          <Button type="xs-more" onClick={() => router.push(`comm/${listType[title]}`)}>더보기</Button>
+          <Button type="xs-more" onClick={() => router.push(`comm/${listType[title]}`)}>
+            더보기
+          </Button>
         </Link>
       </div>
       <div
@@ -65,8 +67,7 @@ const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDe
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
         onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-      >
+        onMouseMove={handleMouseMove}>
         <CardDeckItem deckTitle={deckTitle} count={count} constructor={constructor} />
         <CardDeckItem deckTitle={deckTitle} count={count} constructor={constructor} />
         <CardDeckItem deckTitle={deckTitle} count={count} constructor={constructor} />
