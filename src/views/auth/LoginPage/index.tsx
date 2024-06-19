@@ -17,7 +17,7 @@ const LoginPage = () => {
   const inputProps = SIGN_UP_INPUT_PROPS.reduce((fields, prop) => {
     fields[prop.name] = prop;
     return fields;
-  }, {} as Record<string, typeof SIGN_UP_INPUT_PROPS[0]>);
+  }, {} as Record<string, (typeof SIGN_UP_INPUT_PROPS)[0]>);
 
   const [isValid, setIsValid] = useState<ValidationState>({
     account: true,
@@ -43,7 +43,7 @@ const LoginPage = () => {
         check_password: '',
         email: '',
       });
-      setEmailSent(false)
+      setEmailSent(false);
     }
   }, [isModalOpen]);
 
@@ -64,7 +64,7 @@ const LoginPage = () => {
 
   //TODO:
   const handleKakaoLogin = async () => {
-    console.log("작동");
+    console.log('작동');
   };
 
   const handleLoginClick = () => {
@@ -88,7 +88,7 @@ const LoginPage = () => {
 
   const handleConfirm = () => {
     if (isFormValid() && modalType !== null) {
-      const data = { email: input.email }; 
+      const data = { email: input.email };
       console.log('Submit data:', data);
       setEmailSent(true);
     }
@@ -105,12 +105,15 @@ const LoginPage = () => {
     return (
       <div>
         <p className="font-medium">
-        {modalType === 'email' ? '아이디 찾기' : '비밀번호 찾기'}
+          {modalType === 'email' ? '아이디 찾기' : '비밀번호 찾기'}
           {/* {modalType === 'email' ? '아이디 찾기' : modalType === 'password' ? '비밀번호 찾기' : ''} */}
         </p>
         <p className="font-regular text-12 text-gray6 pb-[10px]">이메일 주소를 입력해주세요.</p>
         {emailSent ? (
-          <p className="font-regular text-14 text-gray6">{input.email}로 이메일을 발송했습니다. <br/>메일함을 확인해주세요.</p>
+          <p className="font-regular text-14 text-gray6">
+            {input.email}로 이메일을 발송했습니다. <br />
+            메일함을 확인해주세요.
+          </p>
         ) : (
           <form id="email">
             <Input
@@ -135,26 +138,19 @@ const LoginPage = () => {
     <main className="flex flex-col items-center min-h-screen">
       <div className="container bg-white flex-grow py-[40px] px-[10px] flex flex-col">
         <div className="flex flex-col flex-grow gap-[30px]">
-          <Button type="back"/>
+          <Button type="back" />
           <div className="px-[10px]">
             <p className="text-18 font-medium mb-[20px]">간편 로그인</p>
             <div
               className="flex justify-center w-[350px] h-[50px] bg-[#fae101] items-center cursor-pointer rounded-md"
-              onClick={handleKakaoLogin}
-            >
-              <Image 
-                src="/icons/kakao.svg"
-                alt="kakao" 
-                width={23} 
-                height={23} 
-                className="w-[23px] mr-5" 
-              />
+              onClick={handleKakaoLogin}>
+              <Image src="/icons/kakao.svg" alt="kakao" width={23} height={23} className="w-[23px] mr-5" />
               카카오로 로그인하기
             </div>
           </div>
           <div className="px-[10px]">
             <p className="text-18 font-medium mb-[20px]">아이디 혹은 이메일로 로그인</p>
-            <form id="loginForm" onSubmit={handleFormSubmit} className='flex flex-col gap-[10px]'>
+            <form id="loginForm" onSubmit={handleFormSubmit} className="flex flex-col gap-[10px]">
               <Input
                 name="account"
                 value={input.account}
@@ -182,37 +178,32 @@ const LoginPage = () => {
         </div>
         <div className="mt-auto px-[10px] flex flex-col text-center justify-center gap-[50px]">
           <span className="text-14 text-gray6">
-            <span 
-              className="font-medium text-primary cursor-pointer"
-              onClick={() => handleOpenModal('email')}
-            >
-              아이디 
+            <span className="font-medium text-primary cursor-pointer" onClick={() => handleOpenModal('email')}>
+              아이디
             </span>
             <span> 또는 </span>
-            <span 
-              className="font-medium text-primary cursor-pointer"
-              onClick={() => handleOpenModal('password')}
-            >
+            <span className="font-medium text-primary cursor-pointer" onClick={() => handleOpenModal('password')}>
               비밀번호
-            </span> 
+            </span>
             <span> 찾기 </span>
           </span>
           <span className="text-14 text-gray6">
-            외워보까의 
-            <Link href='/privacypolicy'>
+            외워보까의
+            <Link href="/privacypolicy">
               <span className="font-medium"> 개인정보 취급방침</span>
             </Link>
-            에 동의 후<br/>로그인을 진행합니다. 
+            에 동의 후<br />
+            로그인을 진행합니다.
           </span>
           <Button type="xl-full" onClick={handleLoginClick}>
             로그인
           </Button>
         </div>
       </div>
-      <Modal 
-        isOpen={isModalOpen} 
+      <Modal
+        isOpen={isModalOpen}
         onClose={emailSent ? handleResendEmail : handleCloseModal}
-        onConfirm={emailSent ? handleCloseModal: handleConfirm}
+        onConfirm={emailSent ? handleCloseModal : handleConfirm}
         closeLabel={emailSent ? "다시보내기" : "취소"}
       >
         {modalContent()}

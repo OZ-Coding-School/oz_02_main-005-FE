@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../@common/ui/Button/Button';
+import Button from '../@common/ui/button/Button';
 import Input from '../@common/ui/input/Input';
 
 interface TestCardItemProps {
