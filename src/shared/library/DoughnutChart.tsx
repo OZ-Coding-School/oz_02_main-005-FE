@@ -41,7 +41,7 @@ function DoughnutChart({ title, data }: { title: string; data: number[] }) {
     return () => {
       DoughnutChart.destroy();
     };
-  }, [router]);
+  }, [router, data]);
 
   return (
     <div className="m-[2rem] w-[70%] ">

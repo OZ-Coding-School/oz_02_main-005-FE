@@ -130,7 +130,7 @@ const Button = ({ type, onClick, children, buttonContents = [], ...props }: Butt
     ),
     's-full': buttonClassName('w-[100px] h-[40px] text-white bg-primary rounded-[4px] font-medium hover:bg-gray8'),
     'xs-full': buttonClassName(
-      'w-[45px] h-[30px] text-12 text-white bg-primary rounded-[4px] font-medium hover:bg-gray8',
+      'w-[52px] h-[30px] text-12 text-white bg-primary rounded-[4px] font-medium hover:bg-gray8',
     ),
     black: buttonClassName('w-[300px] h-[54px] text-white bg-black rounded-[6px] font-medium'),
     back: buttonClassName('w-[24px] h-[24px] flex items-center justify-center'),

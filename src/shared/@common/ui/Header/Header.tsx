@@ -1,21 +1,16 @@
 import React from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
+  const router = useRouter();
   return (
     <header className="w-[390px] h-[50px] pl-[12px] bg-white flex items-center justify-between fixed top-0 z-10">
-      <div>
-        <Image 
-          src="/images/logo.png" 
-          alt="logo"
-          width={200}
-          height={40}
-        />
+      <div className="cursor-pointer" onClick={() => router.push('/')}>
+        <Image src="/images/logo.png" alt="logo" width={200} height={40} />
       </div>
-      <div className='w-24 h-[30px] pr-[12px] bg-primary flex items-center justify-end rounded-l-full'>
-        <p className='text-white text-12'> 
-          {''} 님 
-        </p>
+      <div className="w-24 h-[30px] pr-[12px] bg-primary flex items-center justify-end rounded-l-full">
+        <p className="text-white text-12">{''} 님</p>
       </div>
     </header>
   );

@@ -7,9 +7,10 @@ interface CardListItemProps {
   count: number;
   description: string;
   constructor: string;
+  stars: number;
 }
 
-function CardListItem({ title, count, description, constructor }: CardListItemProps) {
+function CardListItem({ title, count, description, constructor, stars }: CardListItemProps) {
   const router = useRouter();
   const currentPath = usePathname();
 
@@ -19,7 +20,7 @@ function CardListItem({ title, count, description, constructor }: CardListItemPr
   return (
     <div
       onClick={handleClickCardListItem}
-      className="w-[366px] h-[10rem] bg-white rounded-[4px] flex flex-col m-[1rem] gap-[1.5rem] p-[0.75rem] outline outline-1 outline-grayc hover:outline-black">
+      className="w-[366px] h-[10rem] bg-white rounded-[4px] flex flex-col gap-[1.5rem] p-[0.75rem] outline outline-1 outline-grayc hover:outline-black">
       <div className="w-full flex flex-col gap-[1.5rem]">
         <div className="flex items-center justify-between">
           <p className="font-medium text-24">{title}</p>
@@ -29,7 +30,7 @@ function CardListItem({ title, count, description, constructor }: CardListItemPr
       </div>
       <div className="flex gap-[0.5rem] items-center justify-between">
         <p className="text-12 text-text_primary">{constructor}</p>
-        <RatingStars />
+        <RatingStars initialStars={stars} />
       </div>
     </div>
   );

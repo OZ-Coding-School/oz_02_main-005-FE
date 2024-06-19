@@ -19,10 +19,12 @@ const CardDeckItem = ({ deckTitle, count, constructor }: CardDeckItemProps) => {
       </div>
       <div className="flex justify-between items-center">
         <p className="text-text_secondary h-4 text-12">{constructor}</p>
-        <RatingStars />
+        <RatingStars initialStars={0} />
+
       </div>
     </div>
   );
 };
 
 export default CardDeckItem;
+

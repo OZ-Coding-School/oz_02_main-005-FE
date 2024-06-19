@@ -1,6 +1,6 @@
 'use client';
+import Tab from '@/shared/@common/ui/Tab/Tab';
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
-import Tab from '@/shared/@common/ui/tab/Tab';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
