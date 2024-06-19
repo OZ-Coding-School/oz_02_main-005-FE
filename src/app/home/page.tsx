@@ -1,8 +1,10 @@
-import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
+import HomePage from '@/views/HomePage';
 import React from 'react';
 
-const HomePage = () => {
-  return <BaseFrame>홈</BaseFrame>;
+const Page = () => {
+  return (
+    <HomePage />
+  )
 };
 
-export default HomePage;
+export default Page;

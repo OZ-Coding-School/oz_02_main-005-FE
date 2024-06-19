@@ -5,15 +5,54 @@ import Modal from '@/shared/@common/ui/modal';
 import Toggle from '@/shared/@common/ui/toggle/Toggle';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Button from '@/shared/@common/ui/button/Button';
+import Input from '@/shared/@common/ui/input/Input';
+import { SIGN_UP_INPUT_PROPS } from '@/shared/@common/constants/input';
+import validInput from '@/shared/@common/utils/validInput';
 
 
 const SettingsPage = () => {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<React.ReactNode>(null);
+  const [isValid, setIsValid] = useState<ValidationState>({
+    account: false,
+    nickname: false,
+    password: true,
+    check_password: false,
+    email: false,
+  });
+  const [input, setInput] = useState<InputState>({
+    account: '',
+    nickname: '',
+    password: '',
+    check_password: '',
+    email: '',
+  });
+
+  useEffect(() => {
+    if (!isModalOpen) {
+      setInput({
+        account: '',
+        nickname: '',
+        password: '',
+        check_password: '',
+        email: '',
+      });
+    }
+  }, [isModalOpen]);
+
+  const handleChangeInput = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    name: string,
+    currentPassword?: string,
+  ) => {
+    const inputValue = e.target.value;
+    setInput(state => ({ ...state, [name]: inputValue }));
+    setIsValid(state => ({ ...state, [name]: validInput(name, inputValue, currentPassword || '') }));
+  };
 
   const handleOpenModal = (content: React.ReactNode) => {
     setModalContent(content);
@@ -29,6 +68,11 @@ const SettingsPage = () => {
   const handleConfirm = () => {
     router.push('/accountdelete');
   };
+
+  const inputProps = SIGN_UP_INPUT_PROPS.reduce((fields, prop) => {
+    fields[prop.name] = prop;
+    return fields;
+  }, {} as Record<string, typeof SIGN_UP_INPUT_PROPS[0]>);
   
 
   return (
@@ -79,8 +123,18 @@ const SettingsPage = () => {
               onClick={() => handleOpenModal(
                 <div>
                   <p className="font-medium">비밀번호 입력</p>
-                  <p className="text-14 text-gray6">본인확인을 위해 비밀번호를 입력하세요.</p>
-                  TODO: 인풋
+                  <p className="text-14 text-gray6 pb-[15px]">본인확인을 위해 비밀번호를 입력하세요.</p>
+                  <Input
+                    name={inputProps.password.name}
+                    value={input.password}
+                    label="현재 비밀번호" 
+                    type="password"
+                    placeholder="현재 비밀번호를 입력하세요"
+                    onChange={e => handleChangeInput(e, inputProps.password.name, e.target.value)}
+                    isValid={isValid.password}
+                    errorMessage={inputProps.password.errorMessage}
+                    width='350px'
+                  />
                 </div>
               )}
             >

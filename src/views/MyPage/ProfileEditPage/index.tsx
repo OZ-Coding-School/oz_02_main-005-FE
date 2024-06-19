@@ -56,7 +56,7 @@ const ProfileEditPage = () => {
   const handleSaveClick = () => {
     if (selectedAvatar !== null) {
       localStorage.setItem('avatarUrl', avatars[selectedAvatar]);
-      router.push('/mypage');
+      router.push('/info');
     }
   };
 

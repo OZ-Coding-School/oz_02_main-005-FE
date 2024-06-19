@@ -68,6 +68,13 @@
     font-family: inherit;
     font-size: inherit;
   }
+  .hidden-scrollbar {
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }
+  .hidden-scrollbar::-webkit-scrollbar {
+    display: none; 
+  }
 }
 
 @layer components {
