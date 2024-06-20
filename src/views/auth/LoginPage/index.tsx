@@ -52,16 +52,7 @@ const LoginPage = () => {
     }
   }, [isModalOpen]);
 
-  const handleChangeInput = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    name: string,
-    path: string,
-  ) => {
-
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('submit data:', input);
-
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>, name: string, path: string) => {
     const { value } = e.target;
     setInput(state => ({ ...state, [name]: value }));
     setIsValid(state => ({ ...state, [name]: validInput(path, name, value, input.password) }));
@@ -75,13 +66,13 @@ const LoginPage = () => {
   const handleLoginClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    //일단 로컬스토리지 조회 및 유저컨텍스트에 유저정보 설정 
+    //일단 로컬스토리지 조회 및 유저컨텍스트에 유저정보 설정
     const localUser = localStorage.getItem('user');
     if (localUser) {
       const user = JSON.parse(localUser);
       if (user.account === input.account && user.password === input.password) {
         console.log('로그인 성공');
-        setUser(user); 
+        setUser(user);
         router.push('/home');
       } else {
         alert('아이디 또는 비밀번호가 잘못되었습니다.');

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 interface CardDeckListProps {
-  title: "인기카드 뭉치" | "신규카드 뭉치" | "많이 저장한 카드 뭉치" | string;
+  title: '인기카드 뭉치' | '신규카드 뭉치' | '많이 저장한 카드 뭉치' | string;
   deckTitle: string;
   count: number;
   constructor: string;
@@ -61,10 +61,7 @@ const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDe
       <div className="flex justify-between font-bold">
         <p className="text-20 text-text_primary">{title}</p>
         <Link href={moreLink}>
-          <Button 
-            type="xs-more" 
-            onClick={() => router.push(`comm/${listType[title as keyof typeof listType]}`)}
-          >
+          <Button type="xs-more" onClick={() => router.push(`comm/${createPath(title)}`)}>
             더보기
           </Button>
         </Link>
