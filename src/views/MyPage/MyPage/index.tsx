@@ -9,15 +9,10 @@ import Modal from '@/shared/@common/ui/modal';
 import { useState, useEffect } from 'react';
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
-import { getUser, UserInfo } from '@/apis/getUser';
+import { useUser } from '@/shared/context/UserContext';
 
 const MyPage = () => {
-  const [user, setUser] = useState<UserInfo>({
-    account: '',
-    email: '',
-    password: '',
-    nickname: ''
-  });
+  const { user, setUser } = useUser();
   const userPoint = '125';
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,14 +37,13 @@ const MyPage = () => {
     check_new_password: '', 
   });
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const userData = await getUser();
-      setUser(userData);
-    };
-
-    fetchUser();
-  }, []);
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const userData = await getMember();
+  //     setUser(userData);
+  //   };
+  //   fetchUser();
+  // }, []);
 
   useEffect(() => {
     if (!isModalOpen) {
@@ -62,7 +56,7 @@ const MyPage = () => {
         new_password: '', 
         check_new_password: '', 
       });
-      setEmailSent(false)
+      setEmailSent(false);
     }
   }, [isModalOpen]);
 
@@ -105,11 +99,12 @@ const MyPage = () => {
       const data = { [modalType]: input[modalType] };
       console.log('Submit data:', data);
 
+      //TODO: 
       if (modalType === 'email') {
-        setUser((prevUser: UserInfo) => ({ ...prevUser, email: input.email }));
+        //setUser((prevUser: UserInfo) => ({ ...prevUser, email: input.email }));
         setEmailSent(true);
       } else if (modalType === 'nickname') {
-        setUser((prevUser: UserInfo) => ({ ...prevUser, nickname: input.nickname }));
+        //setUser((prevUser: UserInfo) => ({ ...prevUser, nickname: input.nickname }));
         setIsModalOpen(false); 
       }
     }
@@ -118,7 +113,6 @@ const MyPage = () => {
   const handleResendEmail = () => {
     alert(`등록된 이메일: ${input.email} 로 재발송`);
     console.log(`이메일 재발송: ${input.email}`);
-    
     //TODO: 이메일 다시 보내는 로직
     setIsModalOpen(false);
   };
@@ -141,7 +135,7 @@ const MyPage = () => {
                 value={input.nickname}
                 label={inputProps.nickname.label}
                 type={inputProps.nickname.type}
-                placeholder={user.nickname}
+                placeholder={user?.nickname}
                 onChange={e => handleChangeInput(e, inputProps.nickname.name)}
                 isValid={isValid.nickname}
                 errorMessage={inputProps.nickname.errorMessage}
@@ -163,7 +157,7 @@ const MyPage = () => {
                   value={input.email}
                   label={inputProps.email.label}
                   type={inputProps.email.type}
-                  placeholder={user.email}
+                  placeholder={user?.email}
                   onChange={e => handleChangeInput(e, inputProps.email.name)}
                   isValid={isValid.email}
                   errorMessage={inputProps.email.errorMessage}
@@ -225,17 +219,17 @@ const MyPage = () => {
         <div className="flex flex-col flex-grow gap-[30px] items-center">
           <div className='flex flex-col space-y-1'>
             <ProfileAvatar />
-            <p className="font-medium text-center">{user.account}</p>
+            <p className="font-medium text-center">{user?.account}</p>
           </div>
           <div className='flex flex-col bg-white pt-[15px] border border-grayc rounded-[15px]'>
             <div className='w-[350px] pb-[10px] px-[15px] border-b border-grayc'>
               <p className='text-14'>아이디</p>
-              <p className='text-gray6 text-14'>{user.account}</p>
+              <p className='text-gray6 text-14'>{user?.account}</p>
             </div>
             <div className='w-[350px] p-[10px] px-[15px] border-b border-grayc flex justify-between'>
               <div className='flex flex-col'>
                 <p className='text-14'>닉네임</p>
-                <p className='text-gray6 text-14'>{user.nickname}</p>
+                <p className='text-gray6 text-14'>{user?.nickname}</p>
               </div>
               <div 
                 className='relative flex items-center cursor-pointer'
@@ -253,7 +247,7 @@ const MyPage = () => {
             <div className='w-[350px] p-[10px] px-[15px] border-b border-grayc flex justify-between'>
               <div className='flex flex-col'>
                 <p className='text-14'>이메일</p>
-                <p className='text-gray6 text-14'>{user.email}</p>
+                <p className='text-gray6 text-14'>{user?.email}</p>
               </div> 
               <div 
                 className='relative flex items-center cursor-pointer'

@@ -35,6 +35,10 @@ const nextConfig = {
         source: '/api/member/:path*',
         destination: `${baseUrl}/member/:path*`,
       },
+//       {
+//         source: '/:path*',
+//         destination: 'https://52.78.66.160:8000/:path*',
+//       },
     ];
   },
 };
