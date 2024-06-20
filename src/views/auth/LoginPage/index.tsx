@@ -5,11 +5,16 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Input from '@/shared/@common/ui/input/Input';
-import validInput from '@/shared/@common/utils/validInput';
 import { SIGN_UP_INPUT_PROPS } from '@/shared/@common/constants/input';
 import Modal from '@/shared/@common/ui/modal';
+import { useRouter } from 'next/navigation';
+import { useUser } from '@/shared/context/UserContext';
+import validInput from '@/shared/@common/utils/validInput';
 
 const LoginPage = () => {
+  const router = useRouter();
+  const { setUser } = useUser();
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalType, setModalType] = useState<string | null>(null);
   const [emailSent, setEmailSent] = useState(false);
@@ -50,16 +55,11 @@ const LoginPage = () => {
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLInputElement>,
     name: string,
-    inputValue: string,
-    currentPassword?: string,
+    path: string,
   ) => {
-    if (e.target) setInput(state => ({ ...state, [name]: inputValue }));
-    setIsValid(state => ({ ...state, [name]: validInput( name, inputValue, currentPassword || '') }));
-  };
-
-  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('submit data:', input);
+    const { value } = e.target;
+    setInput(state => ({ ...state, [name]: value }));
+    setIsValid(state => ({ ...state, [name]: validInput(path, name, value, input.password) }));
   };
 
   //TODO:kakaoLogin
@@ -67,9 +67,25 @@ const LoginPage = () => {
     console.log('작동');
   };
 
-  const handleLoginClick = () => {
-    const form = document.getElementById('loginForm') as HTMLFormElement;
-    if (form) form.requestSubmit();
+  const handleLoginClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    //일단 로컬스토리지 조회 및 유저컨텍스트에 유저정보 설정 
+    const localUser = localStorage.getItem('user');
+    if (localUser) {
+      const user = JSON.parse(localUser);
+      if (user.account === input.account && user.password === input.password) {
+        console.log('로그인 성공');
+        setUser(user); 
+        router.push('/home');
+      } else {
+        alert('아이디 또는 비밀번호가 잘못되었습니다.');
+      }
+    } else {
+      alert('등록된 사용자가 없습니다.');
+    }
+
+    console.log('제출', input);
   };
 
   const handleOpenModal = (type: string) => {
@@ -150,7 +166,7 @@ const LoginPage = () => {
           </div>
           <div className="px-[10px]">
             <p className="text-18 font-medium mb-[20px]">아이디 혹은 이메일로 로그인</p>
-            <form id="loginForm" onSubmit={handleFormSubmit} className="flex flex-col gap-[10px]">
+            <form id="loginForm" className="flex flex-col gap-[10px]">
               <Input
                 name="account"
                 value={input.account}

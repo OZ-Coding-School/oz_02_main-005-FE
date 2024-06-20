@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 import Button from '../@common/ui/button/Button';
 import CardDeckItem from './CardDeckItem';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface CardDeckListProps {
-  title: keyof typeof listType;
+  title: "인기카드 뭉치" | "신규카드 뭉치" | "많이 저장한 카드 뭉치" | string;
   deckTitle: string;
   count: number;
   constructor: string;
@@ -16,7 +17,6 @@ const listType = {
   '신규카드 뭉치': 'new',
   '많이 저장한 카드 뭉치': 'download',
 };
-
 
 const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDeckListProps) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -56,7 +56,12 @@ const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDe
       <div className="flex justify-between font-bold">
         <p className="text-20 text-text_primary">{title}</p>
         <Link href={moreLink}>
-          <Button type="xs-more" onClick={() => router.push(`comm/${listType[title]}`)}>더보기</Button>
+          <Button 
+            type="xs-more" 
+            onClick={() => router.push(`comm/${listType[title as keyof typeof listType]}`)}
+          >
+            더보기
+          </Button>
         </Link>
       </div>
       <div

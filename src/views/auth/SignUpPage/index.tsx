@@ -8,9 +8,11 @@ import { SIGN_UP_INPUT_PROPS } from '@/shared/@common/constants/input';
 import validInput from '@/shared/@common/utils/validInput';
 import { useRouter } from 'next/navigation';
 import { createMember, MemberInfo } from '@/apis/createMember';
+import { useUser } from '@/shared/context/UserContext';
 
 const SignUpPage = () => {
   const router = useRouter();
+  const { setUser } = useUser();
 
   const [isValid, setIsValid] = useState<ValidationState>({
     account: true,
@@ -45,18 +47,32 @@ const SignUpPage = () => {
   const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (Object.values(isValid).every(value => value)) {
+      //일단 로컬스토리지 저장
       try {
         await createMember(input as MemberInfo); 
         //이메일 인증 로직 보류
         //const emailQuery = encodeURIComponent(input.email);
         //router.push(`/verifyemail?email=${emailQuery}`);
-        router.push('/home');
+        setUser({
+          account: input.account,
+          nickname: input.nickname,
+          email: input.email,
+          password: input.password
+        });
+        localStorage.setItem('user', JSON.stringify({
+          account: input.account,
+          nickname: input.nickname,
+          email: input.email,
+          password: input.password
+        }));
+        alert('회원가입 되었습니다.')
+        router.push('/');
       } catch (error) {
         console.error('회원가입 실패', error);
         alert('회원가입에 실패했습니다. 다시 시도해주세요.');
       }
     } else {
-      alert('모든 필드를 올바르게 입력해주세요.');
+      alert('모든 필드를 입력해주세요.');
     }
     console.log('제출', input);
   };

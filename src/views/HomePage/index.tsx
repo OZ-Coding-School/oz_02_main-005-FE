@@ -4,15 +4,17 @@ import React from 'react';
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
 import Button from '@/shared/@common/ui/button/Button';
 import CardDeckList from '@/shared/comm/CardDeckList';
+import { useUser } from '@/shared/context/UserContext';
 
 const HomePage = () => {
+  const { user } = useUser();
 
   return (
     <BaseFrame>
       <div className='py-[20px] flex flex-col gap-[30px] items-center'>
         <div className='flex flex-col p-[16px] w-[366px] h-[184px] bg-[#ECE3FF] rounded-[8px] items-center justify-center gap-5'>
           <div>
-            <p className='font-bold text-20'>{}님과 {}일 동안 함께하고 있어요!</p>
+            <p className='font-bold text-20'>{user?.account}님과 {1}일동안 함께하고 있어요!</p>
             <p className='font-regular'>성장을 위해 꾸준히 학습해보세요!</p>
           </div>
           <Button type="m-more">
