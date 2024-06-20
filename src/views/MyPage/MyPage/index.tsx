@@ -9,7 +9,7 @@ import Modal from '@/shared/@common/ui/modal';
 import { useState, useEffect } from 'react';
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
-import { useUser } from '@/shared/context/UserContext';
+import { useUser, User } from '@/shared/context/UserContext';
 
 const MyPage = () => {
   const { user, setUser } = useUser();
@@ -101,10 +101,10 @@ const MyPage = () => {
 
       //TODO: 
       if (modalType === 'email') {
-        //setUser((prevUser: UserInfo) => ({ ...prevUser, email: input.email }));
+        setUser((prevUser: User | null) => prevUser ? { ...prevUser, email: input.email } : null);
         setEmailSent(true);
       } else if (modalType === 'nickname') {
-        //setUser((prevUser: UserInfo) => ({ ...prevUser, nickname: input.nickname }));
+        setUser((prevUser: User | null) => prevUser ? { ...prevUser, nickname: input.nickname } : null);
         setIsModalOpen(false); 
       }
     }
