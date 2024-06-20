@@ -4,18 +4,26 @@ import CardDeckItem from './CardDeckItem';
 import Link from 'next/link';
 
 interface CardDeckListProps {
-  title: string;
+  title: keyof typeof listType;
   deckTitle: string;
   count: number;
   constructor: string;
   moreLink: string;
 }
 
+const listType = {
+  '인기카드 뭉치': 'popular',
+  '신규카드 뭉치': 'new',
+  '많이 저장한 카드 뭉치': 'download',
+};
+
+
 const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDeckListProps) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const router = useRouter();
 
   const handleMouseDown = (e: React.MouseEvent) => {
     if (scrollContainerRef.current) {
@@ -48,7 +56,7 @@ const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDe
       <div className="flex justify-between font-bold">
         <p className="text-20 text-text_primary">{title}</p>
         <Link href={moreLink}>
-          <Button type="xs-more">더보기</Button>
+          <Button type="xs-more" onClick={() => router.push(`comm/${listType[title]}`)}>더보기</Button>
         </Link>
       </div>
       <div
