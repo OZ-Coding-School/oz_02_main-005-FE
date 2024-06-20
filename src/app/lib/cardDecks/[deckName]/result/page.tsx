@@ -1,6 +1,6 @@
 'use client';
-import DoughnutChart from '@/shared/library/DoughnutChart';
-import TestResultItem from '@/shared/library/TestResultItem';
+import DoughnutChart from '@/features/library/ui/DoughnutChart';
+import TestResultItem from '@/features/library/ui/TestResultItem';
 import React from 'react';
 
 const DUMMY_CHOICES = ['Allow me', 'are you going my way?', 'Can you give me another chance?', 'Anything you say'];

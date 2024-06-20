@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
 import BottomMenuBar from '../bottomMenu/BottomMenuBar';
-import Header from '../header/Header';
-import CancelSaveHeader from '../header/CancelSaveHeader';
+import CancelSaveHeader from '../Header/CancelSaveHeader';
+import Header from '../Header/Header';
 
 interface FrameProps {
   children?: React.ReactNode;

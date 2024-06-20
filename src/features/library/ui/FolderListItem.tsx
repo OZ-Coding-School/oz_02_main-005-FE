@@ -1,5 +1,5 @@
 import React from 'react';
-import { FolderIcon } from '../../../public/icons/lib';
+import { FolderIcon } from '../../../../public/icons/lib';
 import { useRouter } from 'next/navigation';
 
 interface FolderListItemProps {

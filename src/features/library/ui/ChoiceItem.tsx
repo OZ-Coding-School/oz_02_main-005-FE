@@ -1,5 +1,5 @@
 import React from 'react';
-import { DangerIcon, SuccessIcon } from '../../../public/icons/lib';
+import { DangerIcon, SuccessIcon } from '../../../../public/icons/lib';
 interface ChoiceItemProps {
   type: 'correct' | 'choice' | 'wrong';
   choice: string;

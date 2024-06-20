@@ -1,5 +1,5 @@
 import React from 'react';
-import { DeleteIcon } from '../../../public/icons/create';
+import { DeleteIcon } from '../../../../public/icons/create';
 
 interface ProgressBarProps {
   count: number;
@@ -13,7 +13,7 @@ const ProgressBar = ({ count, totalStep }: ProgressBarProps) => {
         <p className="relative">
           {count}/{totalStep}
         </p>
-        <DeleteIcon className="absolute right-4" onClick={() => console.log('클릭')} />
+        <DeleteIcon className="absolute right-16" onClick={() => console.log('클릭')} />
       </div>
 
       <div className="mb-5 h-1 bg-gray8">

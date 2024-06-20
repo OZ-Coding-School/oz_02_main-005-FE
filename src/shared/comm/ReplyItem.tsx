@@ -1,7 +1,3 @@
-import React, { useState } from 'react';
-import RatingStars from '../@common/ui/RatingStars/RatingStars';
-import Button from '../@common/ui/button/Button';
-
 interface ReplyItemProps {
   creationTime: string;
   reply: string;

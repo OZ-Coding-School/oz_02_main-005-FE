@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/shared/@common/ui/button/Button';
+import Button from '@/shared/@common/ui/Button/Button';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -54,7 +54,7 @@ const LoginPage = () => {
     currentPassword?: string,
   ) => {
     if (e.target) setInput(state => ({ ...state, [name]: inputValue }));
-    setIsValid(state => ({ ...state, [name]: validInput( name, inputValue, currentPassword || '') }));
+    setIsValid(state => ({ ...state, [name]: validInput(name, inputValue, currentPassword || '') }));
   };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -126,7 +126,7 @@ const LoginPage = () => {
               isValid={isValid.email}
               // errormessage={inputProps.email.errormessage}
               errorMessage={input.email && !isValid.email ? inputProps.email.errorMessage : ''}
-              width='350px'
+              width="350px"
             />
           </form>
         )}
@@ -160,7 +160,7 @@ const LoginPage = () => {
                 onChange={e => handleChangeInput(e, inputProps.account.name, e.target.value)}
                 isValid={isValid.account}
                 errorMessage={inputProps.account.errorMessage}
-                width='350px'
+                width="350px"
               />
               <Input
                 name={inputProps.password.name}
@@ -171,7 +171,7 @@ const LoginPage = () => {
                 onChange={e => handleChangeInput(e, inputProps.password.name, e.target.value)}
                 isValid={isValid.password}
                 errorMessage={inputProps.password.errorMessage}
-                width='350px'
+                width="350px"
               />
             </form>
           </div>
@@ -204,8 +204,7 @@ const LoginPage = () => {
         isOpen={isModalOpen}
         onClose={emailSent ? handleResendEmail : handleCloseModal}
         onConfirm={emailSent ? handleCloseModal : handleConfirm}
-        closeLabel={emailSent ? "다시보내기" : "취소"}
-      >
+        closeLabel={emailSent ? '다시보내기' : '취소'}>
         {modalContent()}
       </Modal>
     </main>

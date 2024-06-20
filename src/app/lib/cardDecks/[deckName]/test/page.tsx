@@ -1,7 +1,7 @@
 'use client';
 
+import TestCardItem from '@/features/library/ui/TestCardItem';
 import SlideButton from '@/shared/@common/ui/slideButton/SlideButton';
-import TestCardItem from '@/shared/library/TestCardItem';
 
 const DUMMY_ANSWERS = ['Allow me', 'are you going my way?', 'Can you give me another chance?', 'Anything you say'];
 

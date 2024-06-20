@@ -3,7 +3,7 @@
 import { SIGN_UP_INPUT_PROPS } from '@/shared/@common/constants/input';
 
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
-import Button from '@/shared/@common/ui/button/Button';
+import Button from '@/shared/@common/ui/Button/Button';
 import CardListItem from '@/shared/@common/ui/cardListItem/CardListItem';
 import Input from '@/shared/@common/ui/input/Input';
 import SlideButton from '@/shared/@common/ui/slideButton/SlideButton';
@@ -50,7 +50,13 @@ const Page = () => {
 
   return (
     <BaseFrame>
-      <CardListItem constructor="호범" count={5} description="영어 회화 초급자를 위한 영단어" title="영어 회화 단어" />
+      <CardListItem
+        stars={4}
+        constructor="호범"
+        count={5}
+        description="영어 회화 초급자를 위한 영단어"
+        title="영어 회화 단어"
+      />
       <form onSubmit={handleSignUp}>
         {SIGN_UP_INPUT_PROPS.map(({ errorMessage, label, placeholder, type, name }) => (
           <Input

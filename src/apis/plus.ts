@@ -45,19 +45,3 @@ export const getFolders = async (): Promise<Folder[]> => {
     },
   ];
 };
-
-export async function createUser() {
-  const res = await jsonTypeApi('member/create', {
-    account: 'hobeom5022',
-    member_email: 'hobeom5022@naver.com',
-    display_name: 'ㅎㅇ',
-    daily_accom: 1,
-    password: 'sora2049!',
-  });
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch data');
-  }
-
-  return res.json();
-}

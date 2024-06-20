@@ -1,7 +1,4 @@
-import React, { useState } from 'react';
-import RatingStars from '../@common/ui/RatingStars/RatingStars';
 import CommentItem from './CommentItem';
-import Button from '../@common/ui/button/Button';
 import WriteArea from './WriteArea';
 
 interface CommentAreaProps {

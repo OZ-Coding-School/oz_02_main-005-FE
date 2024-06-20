@@ -1,6 +1,7 @@
 'use client';
-import CardItem from '@/shared/library/CardItem';
-import ProgressBar from '@/shared/library/ProgressBar';
+
+import CardItem from '@/features/library/ui/CardItem';
+import ProgressBar from '@/features/library/ui/ProgressBar';
 
 const Page = () => {
   return (
