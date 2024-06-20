@@ -1,4 +1,5 @@
 'use client';
+import { useFoldersStore } from '@/features/library/store/FoldersStore';
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
@@ -6,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const FolderCreationPage = () => {
+  const createFolder = useFoldersStore(state => state.createFolder);
   const router = useRouter();
   const [input, setInput] = useState({
     title: '',
@@ -22,12 +24,13 @@ const FolderCreationPage = () => {
 
   function handleSave() {
     if (isValid.title && isValid.description) {
-      if (input.title !== '') {
+      if (input.title === '') {
         setIsValid(state => ({ ...state, title: false }));
         return;
       }
       //save 로직
-      router.push('/lib');
+      createFolder(input.title, 0);
+      router.push('/lib/folders');
     }
   }
   function handleChange(e: React.ChangeEvent<HTMLInputElement>, type: string) {

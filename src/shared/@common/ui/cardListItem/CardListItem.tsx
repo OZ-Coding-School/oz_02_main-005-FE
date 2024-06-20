@@ -7,7 +7,7 @@ interface CardListItemProps {
   count: number;
   description: string;
   constructor: string;
-  stars: number;
+  stars?: number;
 }
 
 function CardListItem({ title, count, description, constructor, stars }: CardListItemProps) {
@@ -30,7 +30,7 @@ function CardListItem({ title, count, description, constructor, stars }: CardLis
       </div>
       <div className="flex gap-[0.5rem] items-center justify-between">
         <p className="text-12 text-text_primary">{constructor}</p>
-        <RatingStars initialStars={stars} />
+        {stars && <RatingStars initialStars={stars} />}
       </div>
     </div>
   );

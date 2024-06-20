@@ -4,7 +4,7 @@ import Image from 'next/image';
 type RatingStarsProps = {
   totalStars?: number;
   onRatingChange?: (rating: number) => void;
-  initialStars: number;
+  initialStars?: number;
 };
 
 const RatingStars = ({ initialStars = 0, totalStars = 5, onRatingChange = () => {} }: RatingStarsProps) => {

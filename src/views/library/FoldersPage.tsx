@@ -2,10 +2,9 @@
 import React from 'react';
 import Button from '@/shared/@common/ui/Button/Button';
 import { useRouter } from 'next/navigation';
-import { Folder } from '@/apis/plus';
 import FolderListItem from '@/features/library/ui/FolderListItem';
 
-const FoldersPage = ({ folders }: { folders: Folder[] }) => {
+const FoldersPage = ({ folders }: { folders: FolderItem[] }) => {
   const router = useRouter();
   function handlePlusButtonClick() {
     router.push('/plus/folder');
