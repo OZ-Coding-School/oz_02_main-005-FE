@@ -62,7 +62,7 @@ const LoginPage = () => {
     console.log('submit data:', input);
   };
 
-  //TODO:
+  //TODO:kakaoLogin
   const handleKakaoLogin = async () => {
     console.log('작동');
   };

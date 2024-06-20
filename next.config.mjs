@@ -8,6 +8,14 @@ const nextConfig = {
     });
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: '/:path*',
+        destination: 'https://52.78.66.160:8000/:path*',
+      },
+    ];
+  },
 };
 
 export default nextConfig;

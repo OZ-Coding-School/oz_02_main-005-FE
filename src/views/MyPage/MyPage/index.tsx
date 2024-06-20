@@ -9,7 +9,8 @@ import Modal from '@/shared/@common/ui/modal';
 import { useState, useEffect } from 'react';
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
-import { getUser, UserInfo } from '@/apis/getUser';
+import { getMember, UserInfo } from '@/apis/getMember';
+
 
 const MyPage = () => {
   const [user, setUser] = useState<UserInfo>({
@@ -44,7 +45,7 @@ const MyPage = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const userData = await getUser();
+      const userData = await getMember();
       setUser(userData);
     };
 
