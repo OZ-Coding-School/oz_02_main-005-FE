@@ -1,9 +1,9 @@
 ---
-name: Refactoring Template
+name: refactoring Template
 about: 리팩토링 이슈 템플릿
-title: "[refactor] ..."
-labels: "refactor"
-assignees: ""
+title: '[refactor] ...'
+labels: 'refactor'
+assignees: ''
 ---
 
 ## 😁어떤 변경(코드 개선)인가요?
