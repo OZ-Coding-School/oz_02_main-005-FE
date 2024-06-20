@@ -33,7 +33,7 @@ const CardsPage = () => {
     <>
       <p className="w-full text-start text-24 pl-[0.75rem] font-bold text-black">{decodeFolderName}</p>
       {cards.map(({ created_at, file_uploads, folder_id, gpt_input, id, status, title, updated_at }) => (
-        <CardListItem key={id} stars={4} constructor="호범" count={2} description="초급 영어 회화 단어" title={title} />
+        <CardListItem key={id} stars={4} creator="호범" count={2} description="초급 영어 회화 단어" title={title} />
       ))}
     </>
   );
