@@ -9,7 +9,7 @@ import Modal from '@/shared/@common/ui/modal';
 import { useState, useEffect } from 'react';
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
-import { getMember, UserInfo } from '@/apis/getMember';
+// import { getMember, UserInfo } from '@/apis/getMember';
 
 
 const MyPage = () => {
@@ -43,14 +43,14 @@ const MyPage = () => {
     check_new_password: '', 
   });
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const userData = await getMember();
-      setUser(userData);
-    };
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const userData = await getMember();
+  //     setUser(userData);
+  //   };
 
-    fetchUser();
-  }, []);
+  //   fetchUser();
+  // }, []);
 
   useEffect(() => {
     if (!isModalOpen) {
@@ -107,10 +107,10 @@ const MyPage = () => {
       console.log('Submit data:', data);
 
       if (modalType === 'email') {
-        setUser((prevUser: UserInfo) => ({ ...prevUser, email: input.email }));
+        //setUser((prevUser: UserInfo) => ({ ...prevUser, email: input.email }));
         setEmailSent(true);
       } else if (modalType === 'nickname') {
-        setUser((prevUser: UserInfo) => ({ ...prevUser, nickname: input.nickname }));
+        //setUser((prevUser: UserInfo) => ({ ...prevUser, nickname: input.nickname }));
         setIsModalOpen(false); 
       }
     }

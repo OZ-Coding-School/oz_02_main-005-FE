@@ -27,6 +27,7 @@ const SignUpPage = () => {
     email: '',
   });
 
+  //TODO: 백엔드 카카오 회원가입 
   const handleKakaoSignup = async () => {
     console.log("작동");
   };

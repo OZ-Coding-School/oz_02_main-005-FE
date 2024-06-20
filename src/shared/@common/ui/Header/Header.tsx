@@ -2,22 +2,22 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { getMember, MemberInfo } from '@/apis/getMember';
+// import { getMember, MemberInfo } from '@/apis/getMember';
 
 const Header = () => {
   const [account, setAccount] = useState('');
 
-  useEffect(() => {
-    const fetchMemberInfo = async () => {
-      try {
-        const memberInfo: MemberInfo = await getMember();
-        setAccount(memberInfo.account);
-      } catch (error) {
-        console.error('회원정보 조회 실패', error);
-      }
-    };
-    fetchMemberInfo();
-  }, []);
+  // useEffect(() => {
+  //   const fetchMemberInfo = async () => {
+  //     try {
+  //       const memberInfo: MemberInfo = await getMember();
+  //       setAccount(memberInfo.account);
+  //     } catch (error) {
+  //       console.error('회원정보 조회 실패', error);
+  //     }
+  //   };
+  //   fetchMemberInfo();
+  // }, []);
 
   return (
     <header className="w-[390px] h-[50px] pl-[12px] bg-white flex items-center justify-between fixed top-0 z-10">
