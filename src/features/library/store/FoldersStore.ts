@@ -37,16 +37,20 @@ const initialState = [
 
 export interface FoldersState {
   folders: FolderItem[];
-  createFolder: (folder_title: string, count: number) => void;
+  createFolder: (folder: FolderItem) => void;
   id: number;
+  newFolder: Omit<FolderItem, 'id'> | null;
+  setNewFolder: (folder: Omit<FolderItem, 'id'>) => void;
 }
 
 export const useFoldersStore = create<FoldersState>()(set => ({
   folders: initialState,
-  createFolder: (folder_title, count) =>
+  createFolder: folder =>
     set(state => {
-      const newFolder = { folder_title, count, created_at: new Date() + '', id: state.folders.length + 1 };
-      return { folders: [...state.folders, newFolder] };
+      const newFolder = { ...folder, created_at: new Date().toISOString(), id: state.folders.length + 1 };
+      return { folders: [...state.folders, newFolder], newFolder: null };
     }),
   id: 0,
+  newFolder: null,
+  setNewFolder: folder => ({ newFolder: folder }),
 }));

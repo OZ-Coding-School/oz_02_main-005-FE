@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import Button from '@/shared/@common/ui/Button/Button';
 import { useRouter } from 'next/navigation';
@@ -13,7 +12,7 @@ const FoldersPage = ({ folders }: { folders: FolderItem[] }) => {
   return (
     <>
       {folders.map(({ count, created_at, folder_title, id, member, modified_at }) => (
-        <FolderListItem count={count} title={folder_title} key={created_at} />
+        <FolderListItem count={count} title={folder_title} key={id} />
       ))}
       <Button type="xl-line-plus" onClick={handlePlusButtonClick} />
     </>

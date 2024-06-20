@@ -1,5 +1,6 @@
 'use client';
 
+import { useDecksStore } from '@/features/library/store/decksStore';
 import Button from '@/shared/@common/ui/Button/Button';
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
@@ -7,6 +8,7 @@ import CardCreateItem from '@/shared/create/CardCreateItem';
 import React, { useState } from 'react';
 
 const PlusCardDeckPage = () => {
+  const setNewDeck = useDecksStore(state => state.setNewDeck);
   const [input, setInput] = useState({
     title: '',
     description: '',
@@ -20,6 +22,19 @@ const PlusCardDeckPage = () => {
     setIsValid(state => ({ ...state, [type]: validInput('create', type, e.target.value) }));
     setInput(state => ({ ...state, [type]: e.target.value }));
   }
+
+  function handleBlur() {
+    setNewDeck({
+      title: input.title,
+      description: input.description,
+      creator: '',
+      count: 0,
+      file_uploads: '',
+      gpt_input: '',
+      folder_id: 0,
+      updated_at: undefined,
+    });
+  }
   return (
     <>
       <Input
@@ -29,6 +44,7 @@ const PlusCardDeckPage = () => {
         placeholder="제목을 입력해주세요."
         onChange={e => handleChange(e, 'title')}
         value={input.title || ''}
+        onBlur={handleBlur}
       />
       <Input
         label="설명"
@@ -37,6 +53,7 @@ const PlusCardDeckPage = () => {
         placeholder="설명을 입력해주세요."
         onChange={e => handleChange(e, 'description')}
         value={input.description || ''}
+        onBlur={handleBlur}
       />
       <Button
         type="group"
