@@ -1,12 +1,12 @@
+'use client';
+
 import React from 'react';
-import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
+import LandingPage from '@/views/LandingPage';
 
-export default function Home() {
-
+const Page = () => {
   return (
-  <BaseFrame>
-   <>
-   </>
-  </BaseFrame>
-  )
-}
+    <LandingPage />
+  );
+};
+
+export default Page;

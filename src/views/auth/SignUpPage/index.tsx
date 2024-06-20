@@ -1,4 +1,3 @@
-
 'use client';
 
 import Button from '@/shared/@common/ui/button/Button';
@@ -8,9 +7,12 @@ import Input from '@/shared/@common/ui/input/Input';
 import { SIGN_UP_INPUT_PROPS } from '@/shared/@common/constants/input';
 import validInput from '@/shared/@common/utils/validInput';
 import { useRouter } from 'next/navigation';
+import { createMember, MemberInfo } from '@/apis/createMember';
+import { useUser } from '@/shared/context/UserContext';
 
 const SignUpPage = () => {
   const router = useRouter();
+  const { setUser } = useUser();
 
   const [isValid, setIsValid] = useState<ValidationState>({
     account: true,
@@ -27,30 +29,52 @@ const SignUpPage = () => {
     email: '',
   });
 
+  //TODO: 백엔드 카카오 회원가입 
   const handleKakaoSignup = async () => {
     console.log("작동");
   };
 
   const handleChangeInput = (
     e: React.ChangeEvent<HTMLInputElement>,
-    path: string,
     name: string,
-    inputValue: string,
-    currentPassword?: string,
+    currentPassword?: string
   ) => {
-    if (e.target) setInput(state => ({ ...state, [name]: inputValue }));
-    setIsValid(state => ({ ...state, [name]: validInput(path, name, inputValue, currentPassword || '') }));
+    const { value } = e.target;
+    setInput(state => ({ ...state, [name]: value }));
+    setIsValid(state => ({ ...state, [name]: validInput(name, value, currentPassword || '') }));
   };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (Object.values(isValid).every(value => value)) {
-      const emailQuery = encodeURIComponent(input.email);
-      router.push(`/verifyemail?email=${emailQuery}`);
+      //일단 로컬스토리지 저장
+      try {
+        await createMember(input as MemberInfo); 
+        //이메일 인증 로직 보류
+        //const emailQuery = encodeURIComponent(input.email);
+        //router.push(`/verifyemail?email=${emailQuery}`);
+        setUser({
+          account: input.account,
+          nickname: input.nickname,
+          email: input.email,
+          password: input.password
+        });
+        localStorage.setItem('user', JSON.stringify({
+          account: input.account,
+          nickname: input.nickname,
+          email: input.email,
+          password: input.password
+        }));
+        alert('회원가입 되었습니다.')
+        router.push('/');
+      } catch (error) {
+        console.error('회원가입 실패', error);
+        alert('회원가입에 실패했습니다. 다시 시도해주세요.');
+      }
     } else {
-      alert('모든 필드를 올바르게 입력해주세요.');
+      alert('모든 필드를 입력해주세요.');
     }
-    console.log('submit data:', input);
+    console.log('제출', input);
   };
 
   return (
@@ -77,7 +101,7 @@ const SignUpPage = () => {
           <div className="px-[10px] flex-grow flex flex-col">
             <p className="text-18 font-medium mb-[20px]">계정 만들기</p>
             <form id='signupForm'>
-              {SIGN_UP_INPUT_PROPS.map(({ errormessage, label, path, placeholder, type, name }) => (
+              {SIGN_UP_INPUT_PROPS.map(({ errorMessage, label, placeholder, type, name }) => (
                 <Input
                   key={label}
                   name={name}
@@ -85,10 +109,10 @@ const SignUpPage = () => {
                   label={label}
                   type={type}
                   placeholder={placeholder}
-                  onChange={e => handleChangeInput(e, path, name, e.target.value, input.password)}
-                  path={path}
+                  onChange={e => handleChangeInput(e, name, input.password)}
                   isValid={isValid[name]}
-                  errormessage={errormessage}
+                  errorMessage={errorMessage}
+                  width='350px'
                 />
               ))}
             </form>
