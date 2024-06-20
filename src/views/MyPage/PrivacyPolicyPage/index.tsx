@@ -1,7 +1,7 @@
 'use client';
 
 import BottomMenuBar from '@/shared/@common/ui/bottomMenu/BottomMenuBar';
-import Button from '@/shared/@common/ui/button/Button';
+import Button from '@/shared/@common/ui/Button/Button';
 import React from 'react';
 
 const PrivacyPolicyPage = () => {
@@ -37,14 +37,14 @@ const PrivacyPolicyPage = () => {
     <main className="flex flex-col items-center min-h-screen">
       <div className="container bg-gray flex-grow pt-[40px] pb-[65px] px-[10px] flex flex-col">
         <div className="flex flex-col flex-grow gap-[40px]">
-          <div className='flex h-[24px] items-center justify-between'>
-            <Button type="back"/>
+          <div className="flex h-[24px] items-center justify-between">
+            <Button type="back" />
             <p className="text-18 font-medium">개인정보 취급방침</p>
-            <div className='bg-gray w-[24px]'/>
+            <div className="bg-gray w-[24px]" />
           </div>
           <div className="px-[10px]">
             <p className="font-medium">개인정보 취급방침</p>
-            <pre className='text-12 text-gray8 whitespace-pre-wrap font-sans text-start'>{privacyPolicy}</pre>
+            <pre className="text-12 text-gray8 whitespace-pre-wrap font-sans text-start">{privacyPolicy}</pre>
           </div>
         </div>
       </div>

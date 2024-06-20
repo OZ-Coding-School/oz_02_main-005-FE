@@ -1,6 +1,6 @@
 import React from 'react';
 import RatingStars from '../@common/ui/RatingStars/RatingStars';
-import Button from '../@common/ui/button/Button';
+import Button from '../@common/ui/Button/Button';
 
 const WriteArea = ({ type }: { type: 'comment' | 'reply' }) => {
   const object =

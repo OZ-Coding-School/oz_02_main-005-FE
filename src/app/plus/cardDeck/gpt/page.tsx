@@ -4,7 +4,7 @@ import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
 import React, { useState } from 'react';
 import { GptIcon } from '../../../../../public/icons/create';
-import Button from '@/shared/@common/ui/button/Button';
+import Button from '@/shared/@common/ui/Button/Button';
 
 const GptPage = () => {
   const [input, setInput] = useState({

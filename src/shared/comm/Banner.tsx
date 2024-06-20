@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
-import Button from '../@common/ui/button/Button';
 import { useRouter } from 'next/navigation';
+import Button from '../@common/ui/Button/Button';
 
 const Banner = ({ count }: { count: number }) => {
   const router = useRouter();

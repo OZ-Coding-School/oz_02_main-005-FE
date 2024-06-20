@@ -1,8 +1,8 @@
 'use client';
 
 import BottomMenuBar from '@/shared/@common/ui/bottomMenu/BottomMenuBar';
-import Button from '@/shared/@common/ui/button/Button';
-import Tab from '@/shared/@common/ui/tab/Tab';
+import Button from '@/shared/@common/ui/Button/Button';
+import Tab from '@/shared/@common/ui/Tab/Tab';
 import { useState } from 'react';
 
 const PointListPage = () => {
@@ -32,27 +32,24 @@ const PointListPage = () => {
     <main className="flex flex-col items-center min-h-screen">
       <div className="container bg-gray flex-grow py-[40px] px-[10px] flex flex-col">
         <div className="flex flex-col flex-grow gap-[40px]">
-          <div className='flex h-[24px] items-center justify-between'>
-            <Button type="back"/>
+          <div className="flex h-[24px] items-center justify-between">
+            <Button type="back" />
             <p className="text-18 font-medium">내 포인트</p>
-            <div className='bg-gray w-[24px]'/>
+            <div className="bg-gray w-[24px]" />
           </div>
-          <div className='flex justify-center'>
-            <Tab 
-              tabs={['적립', '사용']} 
-              onClick={handleTabClick} 
-            />
+          <div className="flex justify-center">
+            <Tab tabs={['적립', '사용']} onClick={handleTabClick} />
           </div>
           <div className="flex flex-col gap-[20px] text-14">
             {activeTab === 0 && (
               <div className="flex flex-col gap-2 px-2">
                 {sortedAddList.map((item, index) => (
                   <div key={index} className="flex justify-between">
-                    <div className='flex gap-5'>
+                    <div className="flex gap-5">
                       <p>{item.date}</p>
                       <p>{item.content}</p>
                     </div>
-                    <p className='font-medium'>+{item.point}p</p>
+                    <p className="font-medium">+{item.point}p</p>
                   </div>
                 ))}
               </div>
@@ -61,11 +58,11 @@ const PointListPage = () => {
               <div className="flex flex-col gap-2 px-2">
                 {sortedUseList.map((item, index) => (
                   <div key={index} className="flex justify-between">
-                    <div className='flex gap-5'>
+                    <div className="flex gap-5">
                       <p>{item.date}</p>
                       <p>{item.content}</p>
                     </div>
-                    <p className='font-medium'>-{item.point}p</p>
+                    <p className="font-medium">-{item.point}p</p>
                   </div>
                 ))}
               </div>

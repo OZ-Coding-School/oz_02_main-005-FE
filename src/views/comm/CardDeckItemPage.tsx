@@ -3,7 +3,7 @@ import React from 'react';
 import { EditIcon } from '../../../public/icons/lib';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import SlideButton from '@/shared/@common/ui/slideButton/SlideButton';
-import Button from '@/shared/@common/ui/button/Button';
+import Button from '@/shared/@common/ui/Button/Button';
 import RatingStars from '@/shared/@common/ui/RatingStars/RatingStars';
 import CommentArea from '@/shared/comm/CommentArea';
 

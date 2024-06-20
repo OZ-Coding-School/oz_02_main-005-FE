@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/shared/@common/ui/button/Button';
+import Button from '@/shared/@common/ui/Button/Button';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -52,11 +52,7 @@ const LoginPage = () => {
     }
   }, [isModalOpen]);
 
-  const handleChangeInput = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    name: string,
-    path: string,
-  ) => {
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>, name: string, path: string) => {
     const { value } = e.target;
     setInput(state => ({ ...state, [name]: value }));
     setIsValid(state => ({ ...state, [name]: validInput(path, name, value, input.password) }));
@@ -70,13 +66,13 @@ const LoginPage = () => {
   const handleLoginClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    //일단 로컬스토리지 조회 및 유저컨텍스트에 유저정보 설정 
+    //일단 로컬스토리지 조회 및 유저컨텍스트에 유저정보 설정
     const localUser = localStorage.getItem('user');
     if (localUser) {
       const user = JSON.parse(localUser);
       if (user.account === input.account && user.password === input.password) {
         console.log('로그인 성공');
-        setUser(user); 
+        setUser(user);
         router.push('/home');
       } else {
         alert('아이디 또는 비밀번호가 잘못되었습니다.');
@@ -142,7 +138,7 @@ const LoginPage = () => {
               isValid={isValid.email}
               // errormessage={inputProps.email.errormessage}
               errorMessage={input.email && !isValid.email ? inputProps.email.errorMessage : ''}
-              width='350px'
+              width="350px"
             />
           </form>
         )}
@@ -176,7 +172,7 @@ const LoginPage = () => {
                 onChange={e => handleChangeInput(e, inputProps.account.name, e.target.value)}
                 isValid={isValid.account}
                 errorMessage={inputProps.account.errorMessage}
-                width='350px'
+                width="350px"
               />
               <Input
                 name={inputProps.password.name}
@@ -187,7 +183,7 @@ const LoginPage = () => {
                 onChange={e => handleChangeInput(e, inputProps.password.name, e.target.value)}
                 isValid={isValid.password}
                 errorMessage={inputProps.password.errorMessage}
-                width='350px'
+                width="350px"
               />
             </form>
           </div>
@@ -220,8 +216,7 @@ const LoginPage = () => {
         isOpen={isModalOpen}
         onClose={emailSent ? handleResendEmail : handleCloseModal}
         onConfirm={emailSent ? handleCloseModal : handleConfirm}
-        closeLabel={emailSent ? "다시보내기" : "취소"}
-      >
+        closeLabel={emailSent ? '다시보내기' : '취소'}>
         {modalContent()}
       </Modal>
     </main>

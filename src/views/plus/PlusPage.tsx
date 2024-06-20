@@ -13,7 +13,7 @@ const PlusPage = () => {
         router.replace('/plus/folder');
         return setIsModalOpen(false);
       case '카드 뭉치':
-        router.replace('/plus/cardDeck');
+        router.replace('/plus/cardDeck/new');
         return setIsModalOpen(false);
     }
   }

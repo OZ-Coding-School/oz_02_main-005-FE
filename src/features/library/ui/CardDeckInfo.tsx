@@ -1,8 +1,8 @@
 import React from 'react';
-import SlideButton from '../@common/ui/slideButton/SlideButton';
-import { EditIcon } from '../../../public/icons/lib';
+import { EditIcon } from '../../../../public/icons/lib';
 import { useParams, usePathname, useRouter } from 'next/navigation';
-import Button from '../@common/ui/button/Button';
+import Button from '@/shared/@common/ui/Button/Button';
+import SlideButton from '@/shared/@common/ui/slideButton/SlideButton';
 interface CardDeckInfoProps {
   constructor: string;
 }
@@ -25,11 +25,13 @@ const CardDeckInfo = ({ constructor }: CardDeckInfoProps) => {
       <div className="w-full h-[3.75rem] flex flex-col justify-between">
         <div className="flex justify-between">
           <p className="text-20 font-bold">{decodeFolderName}</p>
-          <EditIcon />
+          <EditIcon className="cursor-pointer" />
         </div>
         <div className="text-text_secondary text-12">{constructor}</div>
       </div>
-      <div className="bg-white rounded-[5px] h-[8.75rem] flex justify-center items-center">slide</div>
+      <div className="bg-white rounded-[5px] h-[8.75rem] flex justify-center items-center shadow-md cursor-pointer">
+        slide
+      </div>
       <SlideButton />
       <div className="flex gap-6">
         <Button type="m-line" onClick={handleClickStudyModeButton}>

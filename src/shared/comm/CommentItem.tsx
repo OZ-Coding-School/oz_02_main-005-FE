@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import ReplyItem from './ReplyItem';
 import RatingStars from '../@common/ui/RatingStars/RatingStars';
-import Button from '../@common/ui/button/Button';
 import WriteArea from './WriteArea';
+import Button from '../@common/ui/Button/Button';
 
 interface CommentItemProps {
   comment: string;

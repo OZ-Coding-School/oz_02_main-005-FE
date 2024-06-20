@@ -1,21 +1,26 @@
 import React, { useRef, useState } from 'react';
-import Button from '../@common/ui/button/Button';
+import Button from '../@common/ui/Button/Button';
 import CardDeckItem from './CardDeckItem';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 interface CardDeckListProps {
-  title: "인기카드 뭉치" | "신규카드 뭉치" | "많이 저장한 카드 뭉치" | string;
+  title: '인기카드 뭉치' | '신규카드 뭉치' | '많이 저장한 카드 뭉치' | string;
   deckTitle: string;
   count: number;
   constructor: string;
   moreLink: string;
 }
 
-const listType = {
-  '인기카드 뭉치': 'popular',
-  '신규카드 뭉치': 'new',
-  '많이 저장한 카드 뭉치': 'download',
+const createPath = (title: string) => {
+  switch (title) {
+    case '인기카드 뭉치':
+      return 'popular';
+    case '신규카드 뭉치':
+      return 'new';
+    case '많이 저장한 카드 뭉치':
+      return 'download';
+  }
 };
 
 const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDeckListProps) => {
@@ -56,10 +61,7 @@ const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDe
       <div className="flex justify-between font-bold">
         <p className="text-20 text-text_primary">{title}</p>
         <Link href={moreLink}>
-          <Button 
-            type="xs-more" 
-            onClick={() => router.push(`comm/${listType[title as keyof typeof listType]}`)}
-          >
+          <Button type="xs-more" onClick={() => router.push(`comm/${createPath(title)}`)}>
             더보기
           </Button>
         </Link>
@@ -70,8 +72,7 @@ const CardDeckList = ({ title, deckTitle, count, constructor, moreLink }: CardDe
         onMouseDown={handleMouseDown}
         onMouseLeave={handleMouseLeave}
         onMouseUp={handleMouseUp}
-        onMouseMove={handleMouseMove}
-      >
+        onMouseMove={handleMouseMove}>
         <CardDeckItem deckTitle={deckTitle} count={count} constructor={constructor} />
         <CardDeckItem deckTitle={deckTitle} count={count} constructor={constructor} />
         <CardDeckItem deckTitle={deckTitle} count={count} constructor={constructor} />

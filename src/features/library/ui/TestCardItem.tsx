@@ -1,6 +1,6 @@
+import Button from '@/shared/@common/ui/Button/Button';
+import Input from '@/shared/@common/ui/input/Input';
 import React from 'react';
-import Button from '../@common/ui/button/Button';
-import Input from '../@common/ui/input/Input';
 
 interface TestCardItemProps {
   problem: string;

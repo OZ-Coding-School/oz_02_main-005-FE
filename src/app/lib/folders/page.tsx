@@ -1,19 +1,15 @@
 'use client';
-import React from 'react';
-import FolderListItem from '@/shared/library/FolderListItem';
-import Button from '@/shared/@common/ui/button/Button';
-
-
-function handlePlusButtonClick() {}
+import useFetch from '@/shared/hooks/useFetch';
+import FoldersPage from '@/views/library/FoldersPage';
 
 const LibraryFoldersPage = () => {
-  return (
-    <>
-      <FolderListItem count={2} title="영어 회화" />
-      <FolderListItem count={2} title="영어 회화" />
-      <Button type="xl-line-plus" onClick={handlePlusButtonClick} />
-    </>
-  );
+  const { loading, data: folders } = useFetch();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return <FoldersPage folders={folders} />;
 };
 
 export default LibraryFoldersPage;
