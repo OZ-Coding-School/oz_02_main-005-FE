@@ -1,5 +1,5 @@
 import { useDecksStore } from '@/features/library/store/decksStore';
-import { useFoldersStore } from '@/features/library/store/foldersStore';
+import { useFoldersStore } from '../../../../features/library/store/foldersStore';
 import { usePathname, useRouter } from 'next/navigation';
 
 type CancelSaveHeaderProps = {

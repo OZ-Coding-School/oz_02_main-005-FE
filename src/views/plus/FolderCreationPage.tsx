@@ -1,5 +1,5 @@
 'use client';
-import { useFoldersStore } from '@/features/library/store/foldersStore';
+import { useFoldersStore } from '../../features/library/store/foldersStore';
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
