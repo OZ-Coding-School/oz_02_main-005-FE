@@ -1,11 +1,13 @@
 'use client';
 import Tab from '@/shared/@common/ui/Tab/Tab';
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
+  const pathName = usePathname();
+  const saveType = pathName.includes('folder');
 
   const [input, setInput] = useState({
     title: '',

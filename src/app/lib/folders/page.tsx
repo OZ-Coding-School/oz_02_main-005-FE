@@ -1,14 +1,9 @@
 'use client';
-import useFetch from '@/shared/hooks/useFetch';
+import { useFoldersStore } from '../../../features/library/store/foldersStore';
 import FoldersPage from '@/views/library/FoldersPage';
 
 const LibraryFoldersPage = () => {
-  const { loading, data: folders } = useFetch();
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+  const folders = useFoldersStore(state => state.folders);
   return <FoldersPage folders={folders} />;
 };
 

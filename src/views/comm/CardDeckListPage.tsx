@@ -47,7 +47,7 @@ const CardDeckListPage = ({ listTitle, cardDeckList }: CardDeckListPageProps) =>
           <CardListItem
             stars={stars}
             description={description}
-            constructor={constructor}
+            creator={constructor}
             count={count}
             title={title}
             key={idx}
