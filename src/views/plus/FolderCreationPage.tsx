@@ -1,4 +1,5 @@
 'use client';
+import { useFoldersStore } from '@/features/library/store/FoldersStore';
 import BaseFrame from '@/shared/@common/ui/baseFrame/BaseFrame';
 import Input from '@/shared/@common/ui/input/Input';
 import validInput from '@/shared/@common/utils/validInput';
@@ -6,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 
 const FolderCreationPage = () => {
+  const setNewFolder = useFoldersStore(state => state.setNewFolder);
+  const createFolder = useFoldersStore(state => state.createFolder);
   const router = useRouter();
   const [input, setInput] = useState({
     title: '',
@@ -22,12 +25,13 @@ const FolderCreationPage = () => {
 
   function handleSave() {
     if (isValid.title && isValid.description) {
-      if (input.title !== '') {
+      if (input.title === '') {
         setIsValid(state => ({ ...state, title: false }));
         return;
       }
       //save 로직
-      router.push('/lib');
+      createFolder({ folder_title: input.title, count: 0 });
+      router.push('/lib/folders');
     }
   }
   function handleChange(e: React.ChangeEvent<HTMLInputElement>, type: string) {
@@ -43,6 +47,10 @@ const FolderCreationPage = () => {
         placeholder="폴더 이름을 입력해주세요."
         onChange={e => handleChange(e, 'title')}
         value={input.title || ''}
+        onBlur={() => {
+          setNewFolder({ folder_title: input.title, count: 0 });
+          console.log('blur');
+        }}
       />
       <Input
         label="설명"
@@ -51,6 +59,7 @@ const FolderCreationPage = () => {
         placeholder="설명을 입력해주세요."
         onChange={e => handleChange(e, 'description')}
         value={input.description || ''}
+        onBlur={() => setNewFolder({ folder_title: input.title, count: 0 })}
       />
     </BaseFrame>
   );

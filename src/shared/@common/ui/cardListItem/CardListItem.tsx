@@ -6,11 +6,11 @@ interface CardListItemProps {
   title: string;
   count: number;
   description: string;
-  constructor: string;
-  stars: number;
+  creator: string;
+  stars?: number;
 }
 
-function CardListItem({ title, count, description, constructor, stars }: CardListItemProps) {
+function CardListItem({ title, count, description, creator, stars }: CardListItemProps) {
   const router = useRouter();
   const currentPath = usePathname();
 
@@ -29,8 +29,8 @@ function CardListItem({ title, count, description, constructor, stars }: CardLis
         <p className="text-text_secondary">{description}</p>
       </div>
       <div className="flex gap-[0.5rem] items-center justify-between">
-        <p className="text-12 text-text_primary">{constructor}</p>
-        <RatingStars initialStars={stars} />
+        <p className="text-12 text-text_primary">{creator}</p>
+        {stars && <RatingStars initialStars={stars} />}
       </div>
     </div>
   );
