@@ -1,5 +1,5 @@
 'use client';
-import { useFoldersStore } from '../../../features/library/store/foldersStore';
+import { useFoldersStore } from '@/features/library/store/foldersStore';
 import FoldersPage from '@/views/library/FoldersPage';
 
 const LibraryFoldersPage = () => {
