@@ -9,7 +9,7 @@ const nextConfig = {
     return config;
   },
   async rewrites() {
-    const baseUrl = 'https://52.78.66.160:8000';
+    const baseUrl = 'http://13.124.66.210:8000';
     return [
       {
         source: '/api/cards/:path*',
@@ -35,10 +35,10 @@ const nextConfig = {
         source: '/api/member/:path*',
         destination: `${baseUrl}/member/:path*`,
       },
-//       {
-//         source: '/:path*',
-//         destination: 'https://52.78.66.160:8000/:path*',
-//       },
+      //       {
+      //         source: '/:path*',
+      //         destination: 'https://52.78.66.160:8000/:path*',
+      //       },
     ];
   },
 };
