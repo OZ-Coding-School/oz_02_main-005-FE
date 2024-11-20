@@ -4,9 +4,9 @@ import React from 'react';
 import LandingPage from '@/views/LandingPage';
 
 const Page = () => {
-  return (
-    <LandingPage />
-  );
+  return <LandingPage />;
 };
 
 export default Page;
+
+// deploy test
